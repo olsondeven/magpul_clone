@@ -1,0 +1,29 @@
+{
+  "name": "coder_friends",
+  "version": "1.0.0",
+  "description": "o_auth practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olsondeven/CoderFriends.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/olsondeven/CoderFriends/issues"
+  },
+  "homepage": "https://github.com/olsondeven/CoderFriends#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "massive": "^2.5.0",
+    "passport": "^0.3.2",
+    "passport-github2": "^0.1.10"
+  }
+}
