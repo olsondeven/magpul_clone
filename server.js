@@ -5,9 +5,9 @@ const session = require('express-session');
 const cors = require('cors');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
-const massive = require('massive');
+var massive = require('massive');
 const passportGithub2 = require('passport-Github2');
-// const mainCtrl = require('./server/mainCtrl.js');
+const mainCtrl = require('./server/mainCtrl.js');
 const app = express();
 const corsOptions = {
   origin: 'http://localhost:'+config.port
@@ -33,12 +33,11 @@ app.use(passport.session());
 //sync to database
 const connectionString = 'postgres://postgres:'+config.masPas+'@localhost/mpdb';
 // console.log(connectionString);
-const conn = massive.connectSync({connectionString: connectionString});
+var massive = massive.connectSync({ connectionString: connectionString})
 //add your connection to express
-app.set('db', conn);
+app.set('./server/db', massive);
 //declare a db object for requests
-var db = app.get('./db');
-const mainCtrl = require('./server/mainCtrl.js');
+var db = app.get('db');
 ///////////////
 // endpoints //
 //////////////
