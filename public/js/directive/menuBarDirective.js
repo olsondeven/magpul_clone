@@ -1,4 +1,4 @@
-myApp.directive('menuDirect',{
+myApp.directive('menuDirect',function(){
   return {
     restrict: 'EA',
     templateUrl: '../../templates/menuBar.html',

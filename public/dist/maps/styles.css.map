@@ -1,0 +1,1 @@
+{"version":3,"sources":["mainStyle.scss"],"names":[],"mappings":"AACA,IAAI,CAAA;EACF,MAAM,EAAE,CAAC;EACT,UAAU,EAAE,UAAU,GACvB","file":"../styles.css","sourcesContent":["$prim-color: blue;\r\nbody{\r\n  margin: 0;\r\n  box-sizing: border-box;\r\n}\r\n"]}
