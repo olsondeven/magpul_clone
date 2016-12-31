@@ -7,7 +7,7 @@ const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const massive = require('massive');
 const passportGithub2 = require('passport-Github2');
-const mainCtrl = require('./server/mainCtrl.js');
+// const mainCtrl = require('./server/mainCtrl.js');
 const app = express();
 const corsOptions = {
   origin: 'http://localhost:'+config.port
@@ -31,18 +31,18 @@ app.use(passport.session());
 // DATABASE //
 /////////////
 //sync to database
-const conn = massive.connectSync({
-  connectionString: 'postgress: //postgres:@localhost/'
-});
-//declare a db object for requests
-const db = app.get('db');
+const connectionString = 'postgres://postgres:'+config.masPas+'@localhost/mpdb';
+// console.log(connectionString);
+const conn = massive.connectSync({connectionString: connectionString});
 //add your connection to express
 app.set('db', conn);
-
+//declare a db object for requests
+var db = app.get('./db');
+const mainCtrl = require('./server/mainCtrl.js');
 ///////////////
 // endpoints //
 //////////////
-app.get('/api/products/:category',mainCtrl.getProductsCategory);
+app.get('/api/products/',mainCtrl.getProductsCategory);
 app.listen(config.port, function(){
   console.log('listening to port: ',config.port);
 });
