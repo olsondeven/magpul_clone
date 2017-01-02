@@ -3,9 +3,9 @@
 var myApp = angular.module('myApp', ['ui.router']);
 
 myApp.config(function ($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('home');
+  $urlRouterProvider.otherwise('/');
   $stateProvider.state('home', {
-    url: '/home',
+    url: '/',
     templateUrl: './templates/home.html',
     controller: 'homeCtrl'
   }).state('product', {
@@ -53,6 +53,9 @@ myApp.controller('productDetailCtrl', function ($scope, mainSrvc) {
 }); //closing
 'use strict';
 
+myApp.service('mainSrvc', function () {});
+'use strict';
+
 myApp.directive('footerDirect', function () {
   return {
     restrict: 'EA',
@@ -71,7 +74,4 @@ myApp.directive('menuDirect', function () {
     ctrl: function ctrl($scope) {}
   };
 }); //closing
-'use strict';
-
-myApp.service('mainSrvc', function () {});
 //# sourceMappingURL=bundle.js.map

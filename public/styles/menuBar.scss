@@ -1,0 +1,36 @@
+$bgcolor: #222222;
+$textcolor: #FFFFFF;
+body{
+  margin: 0;
+  box-sizing: border-box;
+}
+.menu-bar-wrapper{
+  width: 1903px;
+  height: 45px;
+  background-color: $bgcolor;
+  color: $textcolor;
+  display: flex;
+  justify-content: space-between;
+}
+.menu-logo{
+ margin-left: 62px;
+}
+.menu-selection{
+  padding-left: 249px;
+  padding-right: 358px;
+  width: 1143px;
+  height: 100%;
+  font-size: 100%;
+  font-weight: bolder;
+  display: flex;
+  // justify-content: space-between;
+  align-items: center;
+}
+.search-profile-cart{
+  margin-left: 5%;
+  width: 30%;
+  height: 100%;
+}
+.menu-input{
+  color: $textcolor;
+}

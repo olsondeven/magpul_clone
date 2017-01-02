@@ -141,3 +141,26 @@ null,
 'Impact and crush resistant all polymer body\$Constant-curve internal geometry for smooth feeding\$Anti-tilt, self-lubricating follower for increased reliability\$Long life stainless steel spring\$Ribbed gripping surface and aggressive front and rear texture for positive magazine handling\$Paint pen dot matrix panels on the bottom of the body to allow for identification marking\$Flared floorplate aids magazine handling and disassembly yet is slim enough for use with most pouches',
 true,
 'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Products/Magazines/AK_AKM/MAG658/20AK-HERO.jpg&Width=1270&Height=500&altFmImage_path=/Files/Files/Images/Products/noImage.png&Format=jpg&Crop=5&Background=ffffff')
+
+INSERT INTO products (price,name,platform,gen,modelNumber,caliber,capacity,category,subCategory,mainImg,imgOne,imgTwo,imgThree,color,specs,details,features,new,pageImg)
+VALUES (59.95,
+'MOE\XAE AK Stock',
+'AK47/AK74',
+null,
+'MAG616',
+null,
+null,
+'FIREARMS ACCESSORIES',
+'Buttstocks',
+'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Products/ButtStocks/AK/MAG616/MAG616-BLK-15.png&Width=360&Height=300&altFmImage_path=/Files/Files/Images/Products/noImage.png&Format=jpg&Crop=5&Background=dfdfdf',
+'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Products/ButtStocks/AK/MAG616/Single-slide/1-MAG616-Base-1-15.png&Format=jpg&background=ffffff&altFmImage_path=/Files/Files/Images/Products/noImage.png&Width=950&Height=450&Crop=5',
+'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Products/ButtStocks/AK/MAG616/Single-slide/2-MAG616-Mid-1-15.png&Format=jpg&background=ffffff&altFmImage_path=/Files/Files/Images/Products/noImage.png&Width=950&Height=450&Crop=5',
+null,
+'black\$A79F79\$939598\$445144\$5F3552',
+'Weight: 12.5 oz.\$Length, from receiver: 9.4 in.\$LOP: ~12.8 in.',
+'Providing Magpul construction and ingenuity to the venerable AK platform, the Magpul MOE AK Stock is an optimized fixed stock for most stamped-receiver rifles.Featuring the unique wedge block fitment of the Zhukov-S Stock, the MOE AK Stock provides internal storage,optimized QD sling swivel placement, a shock absorbing rubber butt-pad for positive placement, and user-selectable snap on Cheek Risers (sold separately.)',
+'Mounts to most stamped receiver AK-47/AKM/AK-74 pattern rifles with fixed stock, single tang trunnion\*\$
+Minimum weight and bulk with reinforced polymer A-frame construction\$Cheek weld combines a slim profile with user comfort\$
+Optional snap on AK Cheek Risers are available for use with optics\$Internal storage compartment optimized for factory AK cleaning kit\$Rubber butt-pad offers an anti-slip surface and increases impact protection\$Rollover on the toe allows for easier shoulder transitions and better fit when using body armor\$Sling Mounts\$Rear – Optional Sling Mounts Kits (TYPE 1 and TYPE 2) accept push-button QD swivels\$Rear – 1.25" fixed sling loop',
+null,
+'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Products/ButtStocks/AK/MAG616/MAG616-HERO-3.png&Width=1270&Height=500&altFmImage_path=/Files/Files/Images/Products/noImage.png&Format=jpg&Crop=5&Background=ffffff')
