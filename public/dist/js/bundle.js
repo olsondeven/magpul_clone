@@ -53,9 +53,6 @@ myApp.controller('productDetailCtrl', function ($scope, mainSrvc) {
 }); //closing
 'use strict';
 
-myApp.service('mainSrvc', function () {});
-'use strict';
-
 myApp.directive('footerDirect', function () {
   return {
     restrict: 'EA',
@@ -74,4 +71,7 @@ myApp.directive('menuDirect', function () {
     ctrl: function ctrl($scope) {}
   };
 }); //closing
+'use strict';
+
+myApp.service('mainSrvc', function () {});
 //# sourceMappingURL=bundle.js.map

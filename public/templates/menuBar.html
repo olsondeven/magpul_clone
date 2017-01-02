@@ -1,16 +1,19 @@
 <div class="menu-bar-wrapper">
-<img class='menu-logo'src="https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Templates/Designs/Magpul/images/logo.gif&Format=gif&Width=218&Height=45" alt="logo menu bar">
+<img ui-sref='/' class='menu-logo hand'src="https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Templates/Designs/Magpul/images/logo.gif&Format=gif&Width=218&Height=45" alt="logo menu bar">
 <div class="menu-selection">
-    <span>PRODUCTS</span>
-    <span>PARTNERS</span>
-    <span>PROPAGANDA</span>
-    <span>FOUNDATIONS</span>
-    <span>CONTACT</span>
+    <span class="hand"id="menu-products">PRODUCTS</span>
+    <span class="hand"id="menu-partners">PARTNERS</span>
+    <span ui-sref="https://www.magpul.com/propaganda?Category=*Blog*" class="hand"id="menu-propaganda">PROPAGANDA</span>
+    <span ui-sref="https://www.magpul.com/foundations" class="hand"id="menu-foundations">FOUNDATIONS</span>
+    <span ui-sref="https://www.magpul.com/contact" class="hand"id="menu-contact">CONTACT</span>
 </div>
 <div class="search-profile-cart">
-<input type="text" class='menu-input' value="Search">
-<i class="material-icons">face</i>
-<i class="material-icons">face</i>
-<i class="material-icons">face</i>
+<input type="text" class='menu-input' ng-model='menuSearchTxt' placeholder="Search">
+<i class="material-icons hand" ng-click=''>search</i>
+<i class="material-icons hand face">face</i>
+<i class="material-icons hand shopping">shopping_cart</i>
 </div>
+</div>
+<div class="menu-products-drop">
+  
 </div>
