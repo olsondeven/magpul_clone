@@ -1,14 +1,13 @@
 const express = require('express');
+const app = express();
 const config = require('./config');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const cors = require('cors');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
-var massive = require('massive');
+const massive = require('massive');
 const passportGithub2 = require('passport-Github2');
-const mainCtrl = require('./server/mainCtrl.js');
-const app = express();
 const corsOptions = {
   origin: 'http://localhost:'+config.port
 };
@@ -33,15 +32,28 @@ app.use(passport.session());
 //sync to database
 const connectionString = 'postgres://postgres:'+config.masPas+'@localhost/mpdb';
 // console.log(connectionString);
-var massive = massive.connectSync({ connectionString: connectionString})
+const conn = massive.connectSync({ connectionString: connectionString});
 //add your connection to express
-app.set('./server/db', massive);
+app.set('db', conn);
 //declare a db object for requests
-var db = app.get('db');
+const db = app.get('db');
 ///////////////
 // endpoints //
 //////////////
-app.get('/api/products/',mainCtrl.getProductsCategory);
 app.listen(config.port, function(){
   console.log('listening to port: ',config.port);
+});
+
+module.exports = app;
+
+const mainCtrl = require('./server/mainCtrl.js');
+
+const apiEndPointsArr = [
+  'products',
+  'products/:subcategory'
+];
+
+apiEndPointsArr.forEach((element,index) => {
+  app.get(`/api/${element}`, mainCtrl.get(element));
+  // app.get(`/api/${element}/:id`, mainCtrl.getOne(element));
 });
