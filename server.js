@@ -50,10 +50,9 @@ const mainCtrl = require('./server/mainCtrl.js');
 
 const apiEndPointsArr = [
   'products',
-  'products/:subcategory'
+  'products/:subCategory'
 ];
 
-apiEndPointsArr.forEach((element,index) => {
-  app.get(`/api/${element}`, mainCtrl.get(element));
-  // app.get(`/api/${element}/:id`, mainCtrl.getOne(element));
+apiEndPointsArr.forEach((endPoint) => {
+  app.get(`/api/${endPoint}`, mainCtrl.get(endPoint));
 });
