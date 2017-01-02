@@ -1,5 +1,5 @@
 
-@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Oswald");
 body {
   margin: 0;
   box-sizing: border-box; }
@@ -10,7 +10,6 @@ body {
 
 .menu-bar-wrapper {
   position: fixed;
-  top: 0;
   width: 1903px;
   height: 45px;
   background-color: #222222;
@@ -42,20 +41,57 @@ body {
 #menu-products:hover {
   color: #222222;
   background-color: #DFDFDF; }
+  #menu-products:hover .menu-products-drop {
+    display: block; }
 
 .menu-products-drop {
-  position: relative;
-  top: 0;
-  right: 20;
-  margin-top: 45px;
+  display: none;
+  position: absolute;
+  top: 45px;
+  left: 548px;
   width: 894px;
-  height: 300px;
-  background-color: #DFDFDF;
-  border: 1px solid red; }
+  height: 380px;
+  background-color: #DFDFDF; }
+  .menu-products-drop ul {
+    padding-left: 10px;
+    padding-right: 60px;
+    color: #222222;
+    font-family: 'Open Sans', sans-serif;
+    list-style-type: none;
+    font-size: 15px;
+    float: left; }
+    .menu-products-drop ul li:hover {
+      color: #AD182C; }
+    .menu-products-drop ul li {
+      padding-top: 9px; }
 
 #menu-partners:hover {
   color: #222222;
   background-color: #DFDFDF; }
+  #menu-partners:hover .menu-partners-drop {
+    display: block; }
+
+.menu-partners-drop {
+  display: none;
+  position: absolute;
+  top: 45px;
+  left: 657px;
+  width: 225px;
+  height: 150px;
+  background-color: #DFDFDF; }
+  .menu-partners-drop ul {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 9px;
+    color: #222222;
+    font-family: 'Open Sans', sans-serif;
+    list-style-type: none;
+    font-size: 14.5px;
+    float: left; }
+    .menu-partners-drop ul li:hover {
+      color: #AD182C; }
+    .menu-partners-drop ul li {
+      padding-top: 9px; }
 
 #menu-propaganda:hover {
   color: #222222;
