@@ -28,6 +28,26 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
 }); //closing
 'use strict';
 
+myApp.directive('footerDirect', function () {
+  return {
+    restrict: 'EA',
+    templateUrl: '../../templates/footer.html',
+    link: function link(scope, element, attribute) {},
+    ctrl: function ctrl($scope) {}
+  };
+}); //closing
+'use strict';
+
+myApp.directive('menuDirect', function () {
+  return {
+    restrict: 'EA',
+    templateUrl: '../../templates/menuBar.html',
+    link: function link(scope, element, attribute) {},
+    ctrl: function ctrl($scope) {}
+  };
+}); //closing
+'use strict';
+
 myApp.controller('cartCtrl', function ($scope, mainSrvc) {
   $scope.test = 'Please be workiing';
 }); //closing
@@ -50,26 +70,6 @@ myApp.controller('productCtrl', function ($scope, mainSrvc) {
 
 myApp.controller('productDetailCtrl', function ($scope, mainSrvc) {
   $scope.test = 'Please be workiing';
-}); //closing
-'use strict';
-
-myApp.directive('footerDirect', function () {
-  return {
-    restrict: 'EA',
-    templateUrl: '../../templates/footer.html',
-    link: function link(scope, element, attribute) {},
-    ctrl: function ctrl($scope) {}
-  };
-}); //closing
-'use strict';
-
-myApp.directive('menuDirect', function () {
-  return {
-    restrict: 'EA',
-    templateUrl: '../../templates/menuBar.html',
-    link: function link(scope, element, attribute) {},
-    ctrl: function ctrl($scope) {}
-  };
 }); //closing
 'use strict';
 
