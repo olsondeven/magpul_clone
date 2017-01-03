@@ -1,3 +1,10 @@
+.home-wrapper {
+  color: #222222;
+  background-color: #FFFFFF;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Oswald");
 body {
@@ -8,9 +15,14 @@ body {
   cursor: pointer;
   cursor: hand; }
 
-.menu-bar-wrapper {
-  position: fixed;
+.menu-holder {
   width: 1903px;
+  height: 45px; }
+
+.menu-bar-wrapper {
+  display: none;
+  position: fixed;
+  width: 100vw;
   height: 45px;
   background-color: #222222;
   color: #FFFFFF;
@@ -18,12 +30,12 @@ body {
   justify-content: space-between; }
 
 .menu-logo {
-  margin-left: 62px; }
+  padding-left: 62px; }
 
 .menu-selection {
   font-family: 'Oswald', sans-serif;
-  margin-left: 249px;
-  margin-right: 358px;
+  padding-left: 200px;
+  padding-right: 270px;
   width: auto;
   height: auto;
   font-size: 20px;
@@ -36,7 +48,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100%;
-    margin-left: 20px; }
+    padding-left: 15px; }
 
 #menu-products:hover {
   color: #222222;
@@ -86,7 +98,7 @@ body {
     color: #222222;
     font-family: 'Open Sans', sans-serif;
     list-style-type: none;
-    font-size: 14.5px;
+    font-size: 14px;
     float: left; }
     .menu-partners-drop ul li:hover {
       color: #AD182C; }
@@ -112,9 +124,9 @@ body {
   width: 485px;
   height: 100%; }
   .search-profile-cart .face {
-    margin-left: 73px; }
+    padding-left: 73px; }
   .search-profile-cart .shopping {
-    margin-left: 10px; }
+    padding-left: 10px; }
 
 .menu-input {
   font-family: 'Oswald', sans-serif;
