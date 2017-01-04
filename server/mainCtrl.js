@@ -10,7 +10,7 @@ module.exports = {
 ////////////////////// query for certain subcategory by ID
 ////////////////////// query for certain subcategory pmag magazines
       if(req.params.subCategory === 'PMAG Magazines'){
-        db.run(`select * from products where subCategory='PMAG Magazines'`, (err, subCategory)=>{
+        db.run(`select * from products where subCategory='PMAG Magazines' order by id asc`, (err, subCategory)=>{
           if(err){
             // console.log(err);
             return res.status(500).send(err);

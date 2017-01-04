@@ -4,22 +4,33 @@ $light-text: #7E7E92;
 $red-text: #AD1832;
 $black-text: #222222;
 $gray-bg: #DFDFDF;
+$product-red: #AD182C;
 .product-wrapper{
   display: flex;
   flex-direction: column;
   align-items: center;
-  // border: 1px solid red;
+  span{
+    height: 97px;
+    display: flex;
+    align-items: center;
+    color: $black-text;
+  }
+  h1{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 175%;
+  }
   .product-header{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-direction: column;
     width: $main-width;
     height: 114px;
     // background: red;
     border-bottom: 1px solid black;
     span{
-      font-size: 12px;
-      padding-top: 18px;
+      // font-size: 12px;
+      // padding-top: 18px;
       font-family: "Oswald", sans-serif;
       color: $light-text;
       span{
@@ -58,6 +69,55 @@ $gray-bg: #DFDFDF;
         font-family: "Oswald", sans-serif;
         font-size: 13px;
         padding-left: 10px;
+      }
+    }
+  }
+  .ak-wrapper{
+    width: $main-width;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border: 1px solid red;
+    .product{
+      // width: 24%;
+      position: relative;
+      width: 423px;
+      height: 426px;
+      border: 1px solid blue;
+      .product-img{
+        width: auto;
+        height: 301px;
+        // background-repeat: no-repeat;
+        // background-color: $gray-bg;
+        background-position: center;
+      }
+      p{
+
+        p{
+          p{
+
+          }
+        }
+      }
+      span{
+        color: $bg-color;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        position: absolute;
+        right: 38px;
+        bottom: 0px;
+        width: 25%;
+        height: 36px;
+        background-color: $product-red;
+        .product-new{
+          display: flex;
+          justify-content: center;
+          text-align: center;
+          position: absolute;
+          top: 0px;
+          left: 0px;
+        }
       }
     }
   }

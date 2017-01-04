@@ -20,10 +20,14 @@ CREATE TABLE products (
   new boolean,
   pageImg TEXT
 );
+update products
+  set mainImg ='https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Products/Magazines/AK_AKM/MAG573/MAG573-MAIN-15.png&Width=360&Height=300&altFmImage_path=/Files/Files/Images/Products/noImage.png&Format=jpg&Crop=5&Background=dfdfdf' where id = 1;
 
-INSERT INTO products (price,name,platform,gen,modelNumber,caliber,capacity,category,subCategory,mainImg,imgOne,imgTwo,imgThree,color,specs,details,features)
+
+
+INSERT INTO products (price,name,platform,gen,modelNumber,caliber,capacity,category,subCategory,mainImg,imgOne,imgTwo,imgThree,color,specs,details,features,new,pageImg)
 VALUES (26.95,
-'PMAG\xAE 30 AK/AKM GEN M3\u2122',
+'PMAG 30 AK/AKM GEN M3',
 'AK/AKM',
 'GEN M3',
 'MAG573',
@@ -40,11 +44,13 @@ null,
 'The PMAG 30 AK/AKM GEN M3 is a durable, lightweight, high reliability 30-round polymer magazine designed for Kalashnikov pattern rifles in 7.62x39mm (AK-47, AKM, AKS, SIG556R, and others.)\$It features steel-reinforced locking lugs, removable floorplate, constant curve geometry, and a high-reliability/low-friction follower for the performance and military-grade durability you expect from a PMAG.\$Made in U.S.A. Magazine counts as three US compliance parts for 922(r).',
 'Impact and crush resistant polymer body\$Stainless steel rear locking lug and reinforced front lug and spine for increased durability\$
 Constant-curve internal geometry for smooth feeding\$Anti-tilt, self-lubricating follower for increased reliability\$Long life stainless steel spring\$
-Ribbed gripping surface and aggressive front and rear texture for positive magazine handling\$Paint pen dot matrix panels on the bottom of the body to allow for identification marking\$Flared floorplate aids magazine handling and disassembly yet is slim enough for use with most pouches')
+Ribbed gripping surface and aggressive front and rear texture for positive magazine handling\$Paint pen dot matrix panels on the bottom of the body to allow for identification marking\$Flared floorplate aids magazine handling and disassembly yet is slim enough for use with most pouches',
+false,
+'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Products/Magazines/AK_AKM/MAG573/MAG573-HERO-15.png&Width=1270&Height=500&altFmImage_path=/Files/Files/Images/Products/noImage.png&Format=jpg&Crop=5&Background=ffffff')
 
-INSERT INTO products (price,name,platform,gen,modelNumber,caliber,capacity,category,subCategory,mainImg,imgOne,imgTwo,imgThree,color,specs,details,features)
+INSERT INTO products (price,name,platform,gen,modelNumber,caliber,capacity,category,subCategory,mainImg,imgOne,imgTwo,imgThree,color,specs,details,features,new,pageImg)
 VALUES (13.95,
-'PMAG\xAE 30 AK/AKM MOE\XAE',
+'PMAG 30 AK/AKM MOE',
 'AK/AKM',
 'MOE',
 'MAG572',
@@ -59,29 +65,13 @@ VALUES (13.95,
 'black\$eccbad',
 'Weight: 6.5 oz.',
 'The PMAG 30 AK/AKM MOE is an inexpensive, lightweight, high reliability 30-round polymer magazine designed for Kalashnikov pattern rifles in 7.62x39mm (AK-47, AKM, AKS, SIG556R and others.)\$It features a removable floorplate, constant curve geometry, and a high-reliability/low-friction follower for the affordable performance you expect from a MOE PMAG.\$Made in U.S.A. Magazine counts as three US compliance parts for 922(r).',
-'Impact and crush resistant all polymer body\$Constant-curve internal geometry for smooth feeding\$Anti-tilt, self-lubricating follower for increased reliability\$Long life stainless steel spring\$Ribbed gripping surface and aggressive front and rear texture for positive magazine handling\$Paint pen dot matrix panels on the bottom of the body to allow for identification marking\$Flared floorplate aids magazine handling and disassembly yet is slim enough for use with most pouches')
-
-alter table products
-ADD new bool
-
-update products
-set new=false where id=1;
-
-update products
-set new=false where id=2;
-
-alter table products
-ADD pageImg TEXT
-
-update products
-set pageImg='https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Products/Magazines/AK_AKM/MAG573/MAG573-HERO-15.png&Width=1270&Height=500&altFmImage_path=/Files/Files/Images/Products/noImage.png&Format=jpg&Crop=5&Background=ffffff' where id=1;
-
-update products
-set pageImg='https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Products/Magazines/AK_AKM/MAG572/MAG572-Hero-15.png&Width=1270&Height=500&altFmImage_path=/Files/Files/Images/Products/noImage.png&Format=jpg&Crop=5&Background=ffffff' where id=2;
+'Impact and crush resistant all polymer body\$Constant-curve internal geometry for smooth feeding\$Anti-tilt, self-lubricating follower for increased reliability\$Long life stainless steel spring\$Ribbed gripping surface and aggressive front and rear texture for positive magazine handling\$Paint pen dot matrix panels on the bottom of the body to allow for identification marking\$Flared floorplate aids magazine handling and disassembly yet is slim enough for use with most pouches',
+false,
+'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Products/Magazines/AK_AKM/MAG572/MAG572-Hero-15.png&Width=1270&Height=500&altFmImage_path=/Files/Files/Images/Products/noImage.png&Format=jpg&Crop=5&Background=ffffff')
 
 INSERT INTO products (price,name,platform,gen,modelNumber,caliber,capacity,category,subCategory,mainImg,imgOne,imgTwo,imgThree,color,specs,details,features,new,pageImg)
 VALUES (12.95,
-'PMAG\xAE 10 AK/AKM MOE\XAE',
+'PMAG 10 AK/AKM MOE',
 'AK/AKM',
 'MOE',
 'MAG657',
@@ -102,7 +92,7 @@ false,
 
 INSERT INTO products (price,name,platform,gen,modelNumber,caliber,capacity,category,subCategory,mainImg,imgOne,imgTwo,imgThree,color,specs,details,features,new,pageImg)
 VALUES (13.95,
-'PMAG\xAE 30 AK47 MOE\XAE',
+'PMAG 30 AK47 MOE',
 'AK/AKM',
 'MOE',
 'MAG673',
@@ -123,7 +113,7 @@ true,
 
 INSERT INTO products (price,name,platform,gen,modelNumber,caliber,capacity,category,subCategory,mainImg,imgOne,imgTwo,imgThree,color,specs,details,features,new,pageImg)
 VALUES (12.95,
-'PMAG\xAE 20 AK/AKM MOE\XAE',
+'PMAG 20 AK/AKM MOE',
 'AK/AKM',
 'MOE',
 'MAG658',
@@ -144,7 +134,7 @@ true,
 
 INSERT INTO products (price,name,platform,gen,modelNumber,caliber,capacity,category,subCategory,mainImg,imgOne,imgTwo,imgThree,color,specs,details,features,new,pageImg)
 VALUES (59.95,
-'MOE\XAE AK Stock',
+'MOE AK Stock',
 'AK47/AK74',
 null,
 'MAG616',

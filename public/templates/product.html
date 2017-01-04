@@ -7,4 +7,19 @@
   <div class="product-filter">
     <div><span>PLATFORMS</span></div><div><span>CALIBER</span></div><div><span>NEW</span></div><div><span>COLOR</span></div><div><span>MORE</span></div>
   </div>
+  <span>
+    <h1>AK/AKM</h1>
+  </span>
+  <div class="ak-wrapper">
+    <div class="product" ng-repeat='product in products'>
+      <div class="product-img" ng-style="{'background-image':'url({{product.mainimg}})'}"></div>
+      <p>{{product.name}}
+        <p>{{product.caliber}}
+          <p>{{product.modelnumber}}</p>
+        </p>
+      </p>
+      <span>${{product.price}}</span>
+      <span ng-if='product.new' class="product-new">NEW</span>
+    </div>
+  </div>
 </div>

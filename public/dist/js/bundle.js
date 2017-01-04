@@ -43,11 +43,14 @@ myApp.controller('homeCtrl', function ($scope, mainSrvc) {
 }); //closing
 'use strict';
 
-myApp.controller('productCtrl', function ($scope, $state, $stateParams, productSrvc) {
+myApp.controller('productCtrl', function ($scope, $state, $stateParams, $sce, productSrvc) {
+  $scope.test = 'PMAG\xAE 30 AK/AKM MOE\xAE';
   $scope.category = $stateParams.category;
   $scope.subcategory = $stateParams.subcategory.toUpperCase();
   productSrvc.getProductList($stateParams.subcategory).then(function (res) {
-    $scope.Magazines = res;
+    $scope.products = res;
+    // console.log($scope.test);
+    // console.log($scope.products[0]);
   });
 }); //closing
 'use strict';
@@ -55,6 +58,37 @@ myApp.controller('productCtrl', function ($scope, $state, $stateParams, productS
 myApp.controller('productDetailCtrl', function ($scope, mainSrvc) {
   // $scope.test = 'Please be workiing';
 }); //closing
+'use strict';
+
+myApp.service('mainSrvc', function () {});
+'use strict';
+
+myApp.service('productSrvc', function ($http) {
+  this.getProductList = function (subcategory) {
+    return $http({
+      method: 'GET',
+      url: '/api/products/' + subcategory
+    }).then(function (res) {
+      var arr = splitDollar(res.data);
+      return arr;
+    });
+  };
+}); //closing
+var splitDollar = function splitDollar(arr) {
+  var arrKey = ['features', 'details', 'specs', 'color'];
+  arr.forEach(function (object, index) {
+    arrKey.forEach(function (key, i) {
+      if (object[key] && object[key].match(/(\\\$)/gi)) {
+        object[key] = object[key].split(/\\\$/gi);
+      } else {
+        var arrNew = [];
+        arrNew.push(object[key]);
+        object[key] = arrNew;
+      }
+    });
+  });
+  return arr;
+};
 'use strict';
 
 myApp.directive('carouselDirect', function () {
@@ -102,35 +136,4 @@ myApp.directive('menuDirect', function () {
     controller: function controller($scope) {}
   };
 }); //closing
-'use strict';
-
-myApp.service('mainSrvc', function () {});
-'use strict';
-
-myApp.service('productSrvc', function ($http) {
-  this.getProductList = function (subcategory) {
-    return $http({
-      method: 'GET',
-      url: '/api/products/' + subcategory
-    }).then(function (res) {
-      var arr = splitDollar(res.data);
-      return arr;
-    });
-  };
-}); //closing
-var splitDollar = function splitDollar(arr) {
-  var arrKey = ['features', 'details', 'specs', 'color'];
-  arr.forEach(function (object, index) {
-    arrKey.forEach(function (key, i) {
-      if (object[key] && object[key].match(/(\\\$)/gi)) {
-        object[key] = object[key].split(/\\\$/gi);
-      } else {
-        var arrNew = [];
-        arrNew.push(object[key]);
-        object[key] = arrNew;
-      }
-    });
-  });
-  return arr;
-};
 //# sourceMappingURL=bundle.js.map
