@@ -15,8 +15,6 @@ module.exports = {
             // console.log(err);
             return res.status(500).send(err);
           }
-            // console.log("products shown");
-            // console.log("products shown",subCategory);
             return res.status(200).send(subCategory);
         });
       }
