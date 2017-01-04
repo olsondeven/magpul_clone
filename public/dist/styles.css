@@ -232,6 +232,52 @@ body {
   justify-content: center;
   align-items: center; }
 
+.product-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .product-wrapper .product-header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 93.6vw;
+    height: 114px;
+    border-bottom: 1px solid black; }
+    .product-wrapper .product-header span {
+      font-size: 12px;
+      padding-top: 18px;
+      font-family: "Oswald", sans-serif;
+      color: #7E7E92; }
+      .product-wrapper .product-header span span {
+        font-family: 'Oswald',sans-serif;
+        color: #AD1832; }
+    .product-wrapper .product-header div {
+      font-weight: 600;
+      font-size: 35px;
+      padding-top: 25px;
+      color: #222222;
+      font-family: 'Oswald', sans-serif;
+      padding-bottom: 15px; }
+  .product-wrapper img {
+    padding-top: 42px;
+    padding-bottom: 16px; }
+  .product-wrapper .product-filter {
+    width: 93.6vw;
+    height: 43px;
+    display: flex;
+    justify-content: space-between; }
+    .product-wrapper .product-filter div {
+      background-color: #DFDFDF;
+      width: 19.4%;
+      height: auto;
+      display: flex;
+      align-items: center; }
+      .product-wrapper .product-filter div span {
+        font-weight: lighter;
+        font-family: "Oswald", sans-serif;
+        font-size: 13px;
+        padding-left: 10px; }
+
 /*
 html5doctor.com Reset Stylesheet
 v1.6.1
