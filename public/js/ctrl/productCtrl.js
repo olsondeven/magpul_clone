@@ -1,3 +1,4 @@
-myApp.controller('productCtrl',function($scope,mainSrvc){
-$scope.test = 'Please be workiing';
+myApp.controller('productCtrl',function($scope,$state,$stateParams,mainSrvc){
+$scope.category = $stateParams.category;
+$scope.subcategory = $stateParams.subcategory;
 });//closing

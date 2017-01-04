@@ -1,5 +1,5 @@
 <div class="menu-bar-wrapper">
-<img ui-sref='/' class='menu-logo hand'src="https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Templates/Designs/Magpul/images/logo.gif&Format=gif&Width=218&Height=45" alt="logo menu bar">
+<img ui-sref='home' class='menu-logo hand'src="https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Templates/Designs/Magpul/images/logo.gif&Format=gif&Width=218&Height=45" alt="logo menu bar">
 <div class="menu-selection">
     <span class="hand"id="menu-products">PRODUCTS
       <div class="menu-products-drop">
@@ -11,7 +11,7 @@
           </ul>
           <ul>
             <b>FIREARMS ACCESSORIES</b>
-            <li>PMAG Magazines</li>
+            <li ui-sref='product({category:"FIREARMS ACCESSORIES",subcategory:"PMAG Magazines"})'>PMAG Magazines</li>
             <li>Magazine Enhancements</li>
             <li>Buttstocks</li>
             <li>Buttstock Accessories</li>
@@ -53,7 +53,7 @@
           <li>FEATURED WHOLESALERS</li>
           <li>FEATURED ONLINE RETAILERS</li>
           <li>FEATURED RETAILERS</li>
-          <li>LOCAL GUN SHOPS</li> 
+          <li>LOCAL GUN SHOPS</li>
         </ul>
       </div>
     </span>
@@ -62,9 +62,13 @@
     <span class="hand"id="menu-contact">CONTACT</span>
 </div>
 <div class="search-profile-cart">
-<input type="text" class='menu-input' ng-model='menuSearchTxt' placeholder="Search">
-<i class="material-icons hand" ng-click=''>search</i>
-<i class="material-icons hand face">face</i>
-<i class="material-icons hand shopping">shopping_cart</i>
+  <div class='ms'>
+    <input type="text" class='menu-input' ng-model='menuSearchTxt' placeholder="Search">
+    <i class="material-icons hand" ng-click=''>search</i>
+  </div>
+  <div>
+    <i class="material-icons hand shopping">shopping_cart</i>
+    <i class="material-icons hand face">face</i>
+  </div>
 </div>
 </div>

@@ -5,7 +5,7 @@ myApp.directive('menuDirect',function(){
     link: function (scope,element,attribute){
 
     },
-    ctrl: function($scope){
+    controller: function($scope){
 
     }
   };

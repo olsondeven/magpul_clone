@@ -1,12 +1,127 @@
-$hometextcolor: #222222;
-$homebgcolor: #FFFFFF;
+$main-width: 92.8vw;
+$bg-color: #DFDFDF;
+$bgsub-color: #AD182C;
+$sub-color: #EAF0FF;
+$home-text: #222222;
 .home-wrapper{
-  color: $hometextcolor;
-  background-color: #FFFFFF;
-  width: 100vw;
   display: flex;
-  font-family: 'Oswald',sans-serif;
   flex-direction: column;
   align-items: center;
-
+  span{
+    height: 97px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $home-text;
+  }
+  h1{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 175%;
+  }
+  .home-products{
+    width: $main-width;
+    height: 380px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: space-between;
+    .home-product{
+      position: relative;
+      width: 32.5%;
+      span{
+        height: auto;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 700;
+        font-size: 150%;
+        background-color: $bg-color;
+        color: $home-text;
+      }
+      .sub-span{
+        height: auto;
+        position: absolute;
+        top: 60px;
+        left: 20px;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 700;
+        font-size: 80%;
+        background-color: $bgsub-color;
+        color: $sub-color;
+      }
+      .sub-span:hover{
+        opacity: .75;
+        cursor: pointer;
+        cursor: hand;
+      }
+      img{
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+  }
+  .home-videos{
+    width: $main-width;
+    height: 219px;
+    display: flex;
+    justify-content: space-between;
+    .home-video{
+      position: relative;
+      width: 24%;
+      height: 100%;
+      background-color: black;
+      background-size: cover;
+      background-position: center;
+      span{
+        height: auto;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 700;
+        font-size: 150%;
+        background-color: $bg-color;
+        color: $home-text;
+      }
+    }
+  }
+  .home-footer-spacer{
+    height: 59px;
+  }
+  .home-footer-img{
+    width: $main-width;
+    height: 687px;
+    background-image: url('https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Homepage/quote-image.jpg&Width=1810&altFmImage_path=/Files/Files/Images/Products/noImage.png&Format=jpg&Crop=5&Background=ffffff');
+    background-size: cover;
+    background-position: cover;
+  }
+}
+.carousel-container{
+  width: 92.8vw;
+  position: relative;
+  height: 100%;
+  background-color: red;
+  img{
+    margin: auto;
+    width: 100%;
+    height: 100%;
+  }
+}
+.carousel-caption{
+  p{
+    font-size: 300%;
+    font-family: 'Oswald',sans-serif;
+    font-weight: 600;
+  }
 }

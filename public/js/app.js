@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp',['ui.router']);
+var myApp = angular.module('myApp',['ui.router','ui.bootstrap']);
 
 myApp.config(function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise('/');
@@ -9,7 +9,7 @@ myApp.config(function($stateProvider, $urlRouterProvider){
     controller: 'homeCtrl'
   })
   .state('product',{
-    url: '/product',
+    url: '/product/:category/:subcategory',
     templateUrl: './templates/product.html',
     controller: 'productCtrl'
   })
