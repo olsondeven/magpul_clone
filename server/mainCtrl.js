@@ -4,8 +4,8 @@ const db = app.get('db');
 module.exports = {
   get: function(endpoint){
     return function(req, res, next){
-      console.log('params',req.params);
-      console.log('query',req.query);
+      // console.log('params',req.params);
+      // console.log('query',req.query);
 
 ////////////////////// query for certain subcategory by ID
 ////////////////////// query for certain subcategory pmag magazines
@@ -16,6 +16,7 @@ module.exports = {
             return res.status(500).send(err);
           }
             // console.log("products shown");
+            // console.log("products shown",subCategory);
             return res.status(200).send(subCategory);
         });
       }
@@ -27,7 +28,7 @@ module.exports = {
             // console.log(err);
             return res.status(500).send(err);
           }
-            // console.log("products shown");
+            // console.log("products shown",subCategory.data);
             return res.status(200).send(subCategory);
         });
       }

@@ -1,6 +1,11 @@
 module.exports = {
   splitDollar: function(str){
-    var splitStr = str.split(/\$/gi);
-    return splitStr;
+    if(str.match(/\$/gi)){
+      let strArr = str.split(/\$/gi);
+      return splitStr;
+    }else{
+      let strArr = [];
+      return (strArr.push(str));
+    }
   }
 };

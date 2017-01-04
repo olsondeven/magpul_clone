@@ -43,9 +43,10 @@ myApp.controller('homeCtrl', function ($scope, mainSrvc) {
 }); //closing
 'use strict';
 
-myApp.controller('productCtrl', function ($scope, $state, $stateParams, mainSrvc) {
+myApp.controller('productCtrl', function ($scope, $state, $stateParams, productSrvc) {
   $scope.category = $stateParams.category;
   $scope.subcategory = $stateParams.subcategory;
+  productSrvc.getProductList($stateParams.category, $stateParams.subcategory);
 }); //closing
 'use strict';
 
@@ -102,4 +103,16 @@ myApp.directive('menuDirect', function () {
 'use strict';
 
 myApp.service('mainSrvc', function () {});
+'use strict';
+
+myApp.service('productSrvc', function ($http) {
+  this.getProductList = function (category, subcategory) {
+    return $http({
+      method: 'GET',
+      url: '/api/products/' + subcategory
+    }).then(function (res) {
+      console.log('productSrvc', res.status, '\n\nData', res.data);
+    });
+  };
+}); //closing
 //# sourceMappingURL=bundle.js.map
