@@ -30,6 +30,17 @@ module.exports = {
             return res.status(200).send(subCategory);
         });
       }
+///////////////////id get////////////////////////////////////////////
+///////////////////id get////////////////////////////////////////////
+      if (req.query.id) {
+        console.log('log for endpoint',"select * from products where id="+req.query.id);
+        db.run("select * from products where id="+req.query.id, (err, idProduct)=>{
+          if (err) {
+            return res.status(500).send(err);
+          }
+          return res.status(200).send(idProduct);
+        });
+      }
       //endpoint for all products
       if (endpoint === 'products' && req.pramas === false && req.query === false) {
         db.run(`select * from ${endpoint}`, (err, products)=>{

@@ -10,6 +10,7 @@ $product-red: #AD182C;
   flex-direction: column;
   align-items: center;
   span{
+    padding-top: 10px;
     height: 97px;
     display: flex;
     align-items: center;
@@ -77,26 +78,58 @@ $product-red: #AD182C;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    border: 1px solid red;
+    // border: 1px solid red;
     .product{
       // width: 24%;
       position: relative;
       width: 423px;
       height: 426px;
-      border: 1px solid blue;
+      // border: 1px solid blue;
       .product-img{
+        position: relative;
         width: auto;
         height: 301px;
         // background-repeat: no-repeat;
         // background-color: $gray-bg;
         background-position: center;
+        span{
+          display: flex;
+          justify-content: center;
+          text-align: center;
+          width: 116px;
+          height: 31px;
+          position: absolute;
+          top: 60px;
+          left: 0;
+          background-color: $product-red;
+          // -ms-transform: rotate(90deg); /* IE 9 */
+          -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+          // transform: rotate(90deg);
+        }
       }
-      p{
-
-        p{
-          p{
-
-          }
+      .product-info{
+        color: #666666;
+        width: 100%;
+        height: auto;
+        padding-top: 32px;
+        padding-left: 40px;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        .product-name{
+          font-family: 'Open Sans',sans-serif;
+          font-size: 20px;
+          font-weight: 700;
+        }
+        .product-caliber{
+          // padding-top: 11px;
+          font-family: 'Open Sans',sans-serif;
+          font-size: 14px;
+        }
+        .product-model{
+          // padding-top: 9px;
+          font-family: 'Open Sans',sans-serif;
+          font-size: 12px;
         }
       }
       span{
@@ -106,18 +139,11 @@ $product-red: #AD182C;
         text-align: center;
         position: absolute;
         right: 38px;
-        bottom: 0px;
+        bottom: 35px;
         width: 25%;
         height: 36px;
         background-color: $product-red;
-        .product-new{
-          display: flex;
-          justify-content: center;
-          text-align: center;
-          position: absolute;
-          top: 0px;
-          left: 0px;
-        }
+        font-family: 'Oswald',sans-serif;
       }
     }
   }

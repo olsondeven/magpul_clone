@@ -15,7 +15,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
   }).state('productDetail', {
     url: '/product/:id',
     templateUrl: './templates/productDetails.html',
-    controller: 'porductDetailCtrl'
+    controller: 'productDetailCtrl'
   }).state('cart', {
     url: '/cart',
     templateUrl: './templates/cart.html',
@@ -55,40 +55,13 @@ myApp.controller('productCtrl', function ($scope, $state, $stateParams, $sce, pr
 }); //closing
 'use strict';
 
-myApp.controller('productDetailCtrl', function ($scope, mainSrvc) {
-  // $scope.test = 'Please be workiing';
-}); //closing
-'use strict';
-
-myApp.service('mainSrvc', function () {});
-'use strict';
-
-myApp.service('productSrvc', function ($http) {
-  this.getProductList = function (subcategory) {
-    return $http({
-      method: 'GET',
-      url: '/api/products/' + subcategory
-    }).then(function (res) {
-      var arr = splitDollar(res.data);
-      return arr;
-    });
-  };
-}); //closing
-var splitDollar = function splitDollar(arr) {
-  var arrKey = ['features', 'details', 'specs', 'color'];
-  arr.forEach(function (object, index) {
-    arrKey.forEach(function (key, i) {
-      if (object[key] && object[key].match(/(\\\$)/gi)) {
-        object[key] = object[key].split(/\\\$/gi);
-      } else {
-        var arrNew = [];
-        arrNew.push(object[key]);
-        object[key] = arrNew;
-      }
-    });
+myApp.controller('productDetailCtrl', function ($scope, $state, $stateParams, $sce, productSrvc) {
+  $scope.test = $stateParams.id;
+  productSrvc.getProductId($stateParams.id).then(function (res) {
+    console.log(res);
   });
-  return arr;
-};
+  // console.log($stateParams.id);
+}); //closing
 'use strict';
 
 myApp.directive('carouselDirect', function () {
@@ -136,4 +109,60 @@ myApp.directive('menuDirect', function () {
     controller: function controller($scope) {}
   };
 }); //closing
+'use strict';
+
+myApp.service('mainSrvc', function () {});
+'use strict';
+
+myApp.service('productSrvc', function ($http) {
+  this.getProductList = function (subcategory) {
+    return $http({
+      method: 'GET',
+      url: '/api/products/' + subcategory
+    }).then(function (res) {
+      var arr = splitDollarArr(res.data);
+      return arr;
+    });
+  };
+  this.getProductId = function (id) {
+    // console.log('fn fired');
+    return $http({
+      method: 'GET',
+      url: '/api/products/?id=' + id
+    }).then(function (res) {
+      // console.log('id res',res.data);
+      var arr = splitDollarArr(res.data);
+      return arr;
+    });
+  };
+}); //closing
+var splitDollarArr = function splitDollarArr(arr) {
+  var arrKey = ['features', 'details', 'specs', 'color'];
+  arr.forEach(function (object, index) {
+    arrKey.forEach(function (key, i) {
+      if (object[key] && object[key].match(/(\\\$)/gi)) {
+        object[key] = object[key].split(/\\\$/gi);
+      } else {
+        var arrNew = [];
+        arrNew.push(object[key]);
+        object[key] = arrNew;
+      }
+    });
+  });
+  return arr;
+};
+
+var splitDollarObj = function splitDollarObj(obj) {
+  var arrKey = ['features', 'details', 'specs', 'color'];
+  arrKey.forEach(function (key, i) {
+    if (obj[key] && obj[key].match(/(\\\$)/gi)) {
+      obj[key] = obj[key].split(/\\\$/gi);
+    } else {
+      var arrNew = [];
+      arrNew.push(obj[key]);
+      obj[key] = arrNew;
+    }
+  });
+  return arr;
+};
 //# sourceMappingURL=bundle.js.map

@@ -4,12 +4,23 @@ myApp.service('productSrvc',function($http){
       method: 'GET',
       url: `/api/products/${subcategory}`
     }).then(function(res){
-      var arr = splitDollar(res.data);
+      var arr = splitDollarArr(res.data);
+      return arr;
+    });
+  }
+  this.getProductId = function(id){
+    // console.log('fn fired');
+    return $http({
+      method: 'GET',
+      url: `/api/products/?id=${id}`
+    }).then(function(res){
+      // console.log('id res',res.data);
+      var arr = splitDollarArr(res.data);
       return arr;
     });
   }
 });//closing
-let splitDollar = function(arr){
+let splitDollarArr = function(arr){
   let arrKey = ['features','details','specs','color'];
   arr.forEach((object,index)=>{
     arrKey.forEach((key,i)=>{
@@ -22,5 +33,19 @@ let splitDollar = function(arr){
       }
     })
   });
+  return arr;
+};
+
+let splitDollarObj = function(obj){
+  let arrKey = ['features','details','specs','color'];
+  arrKey.forEach((key,i)=>{
+    if((obj[key]) && obj[key].match(/(\\\$)/gi)){
+      obj[key] = obj[key].split(/\\\$/gi);
+    }else{
+      let arrNew = [];
+      arrNew.push(obj[key]);
+      obj[key] = arrNew;
+    }
+  })
   return arr;
 };

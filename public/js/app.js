@@ -16,7 +16,7 @@ myApp.config(function($stateProvider, $urlRouterProvider){
   .state('productDetail',{
     url: '/product/:id',
     templateUrl: './templates/productDetails.html',
-    controller: 'porductDetailCtrl'
+    controller: 'productDetailCtrl'
   })
   .state('cart',{
     url: '/cart',
