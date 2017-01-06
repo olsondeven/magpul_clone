@@ -2,6 +2,14 @@ const mainSrvc = require('./mainSrvc.js');
 const app = require('../server.js');
 const db = app.get('db');
 module.exports = {
+  postCart: function(req,res,next){
+    if(!req.session.cart){
+      req.session.cart = [];
+    }
+    req.session.cart.push(req.body);
+    console.log('backend ctrl', req.session.cart);
+    res.status(200).send(req.session.cart);
+  },
   get: function(endpoint){
     return function(req, res, next){
       // console.log('params',req.params);

@@ -14,7 +14,7 @@
             <b>${{productData[0].price}}</b>
             <p>{{productData[0].modelnumber}}</p>
           </div>
-          <div class="detail-color" >
+          <div class="detail-color">
             <p>1. Choose a Color: <b>{{color}}</b></p>
             <span>
               <div id="color" ng-click="colorFn('black')" class="color-box-black hand"></div>
@@ -26,7 +26,7 @@
           </div>
           <div class="detail-cart-btn">
             <!-- <btn class="detail-btn hand" ng-click=''>ADD TO CART</btn> -->
-            <button class="detail-btn hand" ng-click='' type="button" name="button">ADD TO CART</button>
+            <button class="detail-btn hand" ng-click='addToShoppingCart(productData[0].id,productData[0].price)' type="button" name="button">ADD TO CART</button>
           </div>
         </div>
       </div>

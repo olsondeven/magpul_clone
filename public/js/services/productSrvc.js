@@ -19,6 +19,17 @@ myApp.service('productSrvc',function($http){
       return arr;
     });
   }
+  this.postCart = function(proObj){
+    console.log('fn fired srvc', proObj);
+    return $http ({
+      method: 'POST',
+      url: '/api/cart',
+      data: proObj
+    }).then(function(res){
+      console.log(res.data);
+      // return res.data;
+    });
+  }
 });//closing
 let splitDollarArr = function(arr){
   let arrKey = ['features','details','specs','color'];

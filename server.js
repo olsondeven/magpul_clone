@@ -55,3 +55,4 @@ const apiEndPointsArr = [
 apiEndPointsArr.forEach((endPoint) => {
   app.get(`/api/${endPoint}`, mainCtrl.get(endPoint));
 });
+app.post('/api/cart',mainCtrl.postCart);
