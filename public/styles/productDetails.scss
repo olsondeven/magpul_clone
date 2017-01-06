@@ -1,0 +1,175 @@
+$detail-header-width: 66.2vw;
+$detail-main-width: 59.4vw;
+$detail-bgcolor: #FFFFFF;
+$detail-color-black: #222222;
+$detail-light-text: #7E7E92;
+$detail-color-red: #B4182C;
+$detail-gray-border: #C6C6C6;
+$detail-red-btn: #AD182C;
+.detail-wrapper{
+  background-color: $detail-bgcolor;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .detail-header{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: $detail-header-width;
+    height: 114px;
+    border-bottom: 1px solid black;
+    span{
+      padding-top: 15px;
+      font-size: 12px;
+      font-family: "Oswald", sans-serif;
+      color: $detail-light-text;
+      span{
+        font-family: 'Oswald',sans-serif;
+        color: $detail-color-red;
+      }
+    }
+    div{
+      font-weight: 700;
+      font-size: 42px;
+      padding-top: 25px;
+      color: $detail-color-black;
+      font-family: 'Oswald', sans-serif;
+      padding-bottom: 15px;
+    }
+  }
+  .detail-product-info-wrapper{
+    // border: 1px solid purple;
+    width: $detail-main-width;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img{
+      padding-top: 39px;
+    }
+  }
+  .detail-img-price{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    // border: 1px solid red;
+    height: 474px;
+    img{
+      position: relative;
+      // border: 1px solid yellow;
+    }
+    .new{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 116px;
+      height: 31px;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+      background-color: $detail-red-btn;
+      color: $detail-bgcolor;
+    }
+    .detail-options{
+      display: flex;
+      flex-direction: column;
+      border: 2px solid $detail-gray-border;
+      width: 285px;
+      height: 355px;
+      position: absolute;
+      top: 39px;
+      right: 0px;
+      .detail-price{
+        font-family: 'Open Sans', sans-serif;
+        padding-left: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 81px;
+        border-bottom: 2px solid $detail-gray-border;
+        p{
+          font-family: 'Open Sans', sans-serif;
+          padding-top: 10px;
+          font-size: 14px
+        }
+      }
+      .detail-color{
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        width: 100%;
+        height: 124px;
+        padding-left: 20px;
+        border-bottom: 2px solid $detail-gray-border;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        // align-items: center;
+        p{
+          font-family: 'Open Sans', sans-serif;
+          b{
+            color: $detail-red-btn;
+          }
+        }
+        span{
+          padding-top: 5px;
+          display: flex;
+          #color:hover{
+            border-color: $detail-gray-border;
+          }
+        }
+        .color-box-black{
+          background-color: black;
+          width: 36px;
+          height: 35px;
+          border: 3px solid white;
+        }
+        .color-box-sand{
+          background-color: #eccbad;
+          width: 36px;
+          height: 35px;
+          border: 3px solid white;
+        }
+      }
+      .detail-quantity{
+        font-family: 'Open Sans', sans-serif;
+        width: 100%;
+        height: 63px;
+        border-bottom: 2px solid $detail-gray-border;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        p{
+          font-family: 'Open Sans', sans-serif;
+          padding-left: 20px;
+          font-size: 14px;
+        }
+        input{
+          height: 25px;
+          width: 74px;
+          border: 2px solid $detail-gray-border;
+        }
+      }
+      .detail-cart-btn{
+        padding-top: 20px;
+        padding-left: 20px;
+        font-family: 'Open Sans', sans-serif;
+        width: 100%;
+        height: 85px;
+        .detail-btn{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 37px;
+          width: 100px;
+          background-color: $detail-red-btn;
+          color: $detail-bgcolor;
+          font-family: 'Oswald',sans-serif;
+        }
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 $main-width: 93.6vw;
 $bg-color: #FFFFFF;
 $light-text: #7E7E92;
-$red-text: #AD1832;
+$red-text: #B4182C;
 $black-text: #222222;
 $gray-bg: #DFDFDF;
 $product-red: #AD182C;
@@ -10,7 +10,6 @@ $product-red: #AD182C;
   flex-direction: column;
   align-items: center;
   span{
-    padding-top: 10px;
     height: 97px;
     display: flex;
     align-items: center;
@@ -27,11 +26,9 @@ $product-red: #AD182C;
     flex-direction: column;
     width: $main-width;
     height: 114px;
-    // background: red;
     border-bottom: 1px solid black;
     span{
-      // font-size: 12px;
-      // padding-top: 18px;
+      font-size: 12px;
       font-family: "Oswald", sans-serif;
       color: $light-text;
       span{
@@ -40,7 +37,7 @@ $product-red: #AD182C;
       }
     }
     div{
-      font-weight: 600;
+      font-weight: 700;
       font-size: 35px;
       padding-top: 25px;
       color: $black-text;
@@ -101,10 +98,8 @@ $product-red: #AD182C;
           position: absolute;
           top: 60px;
           left: 0;
-          background-color: $product-red;
-          // -ms-transform: rotate(90deg); /* IE 9 */
           -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
-          // transform: rotate(90deg);
+          background-color: $product-red;
         }
       }
       .product-info{

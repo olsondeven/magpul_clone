@@ -1,6 +1,6 @@
 <div class="product-wrapper">
   <div class="product-header">
-    <span>HOME>PRODUCTS>{{category}}><span>{{subcategory}}</span></span>
+      <span>HOME>PRODUCTS>{{category}}><span>{{subcategory}}</span></span>
     <div>{{subcategory}}</div>
   </div>
   <img src="https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files//Files/Images/Products/Magazines/Magazines2.jpg&Width=1810&altFmImage_path=/Files/Files/Images/Products/noImage.png&Format=jpg&Crop=5&Background=ffffff" alt="">
@@ -12,7 +12,7 @@
   </span>
   <div class="ak-wrapper">
     <div class="product" ng-repeat='product in products'>
-      <div id="prod-img-hover"class="product-img hand" ng-style="{'background-image':'url({{product.mainimg}})'}">
+      <div ui-sref='productDetail({id:{{product.id}}})' id="prod-img-hover"class="product-img hand" ng-style="{'background-image':'url({{product.mainimg}})'}">
         <span ng-if='product.new'>NEW</span>
       </div>
       <div class='product-info'>

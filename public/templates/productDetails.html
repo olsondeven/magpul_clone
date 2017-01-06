@@ -1,1 +1,33 @@
-
+<!-- {{test}} -->
+<div class="detail-wrapper">
+  <div class="detail-header">
+    <span>HOME>PRODUCTS>{{productData[0].category}}>{{productData[0].subcategory}}><span>{{productData[0].name}}{{copyright}} {{productData[0].caliber}}</span></span>
+    <div><b>{{productData[0].name}}</b>{{copyright}} {{productData[0].caliber}}</div>
+  </div>
+  <div class="detail-product-info-wrapper">
+      <img ng-src="{{productData[0].pageimg}}" alt="">
+      <div class="detail-img-price">
+        <img ng-src="{{productData[0].detailimg}}" alt="">
+        <span ng-if="productData[0].new"class="new">NEW</span>
+        <div class="detail-options">
+          <div class="detail-price">
+            <b>${{productData[0].price}}</b>
+            <p>{{productData[0].modelnumber}}</p>
+          </div>
+          <div class="detail-color" >
+            <p>1. Choose a Color: <b>{{color}}</b></p>
+            <span>
+              <div id="color" ng-click="colorFn('black')" class="color-box-black hand"></div>
+              <div id="color" ng-click="colorFn('sand')" class="color-box-sand hand"></div>
+            </span>
+          </div>
+          <div class="detail-quantity">
+            <p>2. Choose a quantity: </p><input type="text" ng-model='quantity' placeholder="1">
+          </div>
+          <div class="detail-cart-btn">
+            <div class="detail-btn hand" ng-click=''>ADD TO CART</div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
