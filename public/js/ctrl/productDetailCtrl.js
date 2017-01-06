@@ -17,4 +17,12 @@ myApp.controller('productDetailCtrl',function($scope,$state,$stateParams,$sce,pr
     $scope.productData[0].subcategory = $scope.productData[0].subcategory.toUpperCase();
   });
   // console.log($stateParams.id);
+  $scope.addToShoppingCart = ()=>{
+    if(!$scope.color){
+      
+    }
+    let product = {
+      if()
+    };
+  }
 });//closing
