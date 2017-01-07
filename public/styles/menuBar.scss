@@ -122,14 +122,23 @@ $displaynone: none;
 }
 .search-profile-cart{
   // border: 1px solid red;
+  position: relative;
   display: flex;
   justify-content: space-around;
   align-items: center;
   width: 30%;
   height: auto;
-  .face{
-  }
-  .shopping{
+  span{
+    position: absolute;
+    top: 3.5%;
+    left: 88%;
+    font-family: 'Oswald',sans-serif;
+    font-size: 13px;
+    padding: 2px;
+    color: #AD182C;
+    background-color: gray;
+    border-radius: 7px;
+    text-align: center;
   }
 }
 .menu-input{

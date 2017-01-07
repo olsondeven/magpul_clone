@@ -23,9 +23,9 @@ myApp.config(function($stateProvider, $urlRouterProvider){
     templateUrl: './templates/cart.html',
     controller: 'cartCtrl'
   })
-  .state('editCart',{
-    url: '/edit-cart',
-    templateUrl: '.templates/editCart.html',
-    controller: 'editCartCtrl'
-  })
+  // .state('editCart',{
+  //   url: '/edit-cart',
+  //   templateUrl: '.templates/editCart.html',
+  //   controller: 'editCartCtrl'
+  // })
 });//closing

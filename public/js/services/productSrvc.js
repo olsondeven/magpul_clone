@@ -15,21 +15,35 @@ myApp.service('productSrvc',function($http){
       url: `/api/products/?id=${id}`
     }).then(function(res){
       // console.log('id res',res.data);
-      var arr = splitDollarArr(res.data);
+      let arr = splitDollarArr(res.data);
       return arr;
     });
   }
-  this.postCart = function(proObj){
-    console.log('fn fired srvc', proObj);
-    return $http ({
-      method: 'POST',
-      url: '/api/cart',
-      data: proObj
-    }).then(function(res){
-      console.log(res.data);
-      // return res.data;
+///Cart ///////////////////////////////////////////////////
+///Cart ///////////////////////////////////////////////////
+this.addToCart = (obj)=>{
+  // console.log('srvc obj', obj);
+  if(!localStorage.getItem('cart')){
+    let cart = [];
+    cart.push(obj);
+    localStorage.setItem('cart',JSON.stringify(cart));
+  }else{
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    let present;
+    cart.forEach((element,index)=>{
+      if(element.id === obj.id){
+        element.quantity ++;
+        present = true;
+      }
     });
+    if(!present){
+      cart.push(obj);
+    }
+    localStorage.cart = JSON.stringify(cart);
+    console.log('localStorage',cart);
   }
+}
+
 });//closing
 let splitDollarArr = function(arr){
   let arrKey = ['features','details','specs','color'];

@@ -35,8 +35,8 @@ myApp.controller('productDetailCtrl',function($scope,$state,$stateParams,$sce,pr
         img: $scope.productData[0].mainimg,
     }
     if($scope.quantity && $scope.color){
-      console.log('front end ctrl fired',product);
-      productSrvc.postCart(product);
+      // console.log('front end ctrl fired',product);
+      productSrvc.addToCart(product);
     }
   }
 });//closing

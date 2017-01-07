@@ -1,3 +1,6 @@
-myApp.controller('cartCtrl',function($scope,mainSrvc){
-// $scope.test = 'Please be workiing';
+myApp.controller('cartCtrl',function($scope,productSrvc){
+  // productSrvc.getCart().then(function(res){
+  //   console.log('cartCtrl',res);
+  //   // $scope.cart = res;
+  // });
 });//closing

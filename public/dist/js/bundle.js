@@ -20,68 +20,20 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
     url: '/cart',
     templateUrl: './templates/cart.html',
     controller: 'cartCtrl'
-  }).state('editCart', {
-    url: '/edit-cart',
-    templateUrl: '.templates/editCart.html',
-    controller: 'editCartCtrl'
   });
+  // .state('editCart',{
+  //   url: '/edit-cart',
+  //   templateUrl: '.templates/editCart.html',
+  //   controller: 'editCartCtrl'
+  // })
 }); //closing
 'use strict';
 
-myApp.directive('carouselDirect', function () {
-  return {
-    restrict: 'EA',
-    templateUrl: './js/directive/carousel.html',
-    controller: function controller($scope) {
-      $scope.myInterval = 4000;
-      $scope.slides = [{
-        image: 'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Homepage/PRS_GEN3_Carousel.jpg&Format=jpg&Height=760&Crop=5&background=ffffff',
-        text: 'PRS GEN3 STOCK'
-      }, {
-        image: 'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Homepage/Hats.jpg&Format=jpg&Height=760&Crop=5&background=ffffff',
-        text: 'MAGPUL HATS'
-      }, {
-        image: 'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Homepage/SL-SCarousel.jpg&Format=jpg&Height=760&Crop=5&background=ffffff',
-        text: 'MOE SL-S CARBINE STOCK'
-      }, {
-        image: 'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Homepage/HunterTakedown.jpg&Format=jpg&Height=760&Crop=5&background=ffffff',
-        text: 'HUNTER SERIES STOCKS AND ACCESSORIES'
-      }, {
-        image: 'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Homepage/Glock21.jpg&Format=jpg&Height=760&Crop=5&background=ffffff',
-        text: 'PMAG 21 GL9'
-      }];
-    }
-  };
-});
-'use strict';
-
-myApp.directive('footerDirect', function () {
-  return {
-    restrict: 'EA',
-    templateUrl: '../../templates/footer.html',
-    link: function link(scope, element, attribute) {},
-    ctrl: function ctrl($scope) {}
-  };
-}); //closing
-'use strict';
-
-myApp.directive('menuDirect', function () {
-  return {
-    restrict: 'EA',
-    templateUrl: '../../templates/menuBar.html',
-    link: function link(scope, element, attribute) {},
-    controller: function controller($scope) {}
-  };
-}); //closing
-'use strict';
-
-myApp.controller('cartCtrl', function ($scope, mainSrvc) {
-  // $scope.test = 'Please be workiing';
-}); //closing
-'use strict';
-
-myApp.controller('editCartCtrl', function ($scope, mainSrvc) {
-  $scope.test = 'Please be workiing';
+myApp.controller('cartCtrl', function ($scope, productSrvc) {
+  // productSrvc.getCart().then(function(res){
+  //   console.log('cartCtrl',res);
+  //   // $scope.cart = res;
+  // });
 }); //closing
 'use strict';
 
@@ -139,11 +91,81 @@ myApp.controller('productDetailCtrl', function ($scope, $state, $stateParams, $s
       img: $scope.productData[0].mainimg
     };
     if ($scope.quantity && $scope.color) {
-      console.log('front end ctrl fired', product);
-      productSrvc.postCart(product);
+      // console.log('front end ctrl fired',product);
+      productSrvc.addToCart(product);
     }
   };
 }); //closing
+'use strict';
+
+myApp.directive('carouselDirect', function () {
+  return {
+    restrict: 'EA',
+    templateUrl: './js/directive/carousel.html',
+    controller: function controller($scope) {
+      $scope.myInterval = 3000;
+      $scope.slides = [{
+        image: 'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Homepage/PRS_GEN3_Carousel.jpg&Format=jpg&Height=760&Crop=5&background=ffffff',
+        text: 'PRS GEN3 STOCK'
+      }, {
+        image: 'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Homepage/Hats.jpg&Format=jpg&Height=760&Crop=5&background=ffffff',
+        text: 'MAGPUL HATS'
+      }, {
+        image: 'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Homepage/SL-SCarousel.jpg&Format=jpg&Height=760&Crop=5&background=ffffff',
+        text: 'MOE SL-S CARBINE STOCK'
+      }, {
+        image: 'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Homepage/HunterTakedown.jpg&Format=jpg&Height=760&Crop=5&background=ffffff',
+        text: 'HUNTER SERIES STOCKS AND ACCESSORIES'
+      }, {
+        image: 'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Homepage/Glock21.jpg&Format=jpg&Height=760&Crop=5&background=ffffff',
+        text: 'PMAG 21 GL9'
+      }];
+    }
+  };
+});
+'use strict';
+
+myApp.directive('footerDirect', function () {
+  return {
+    restrict: 'EA',
+    templateUrl: '../../templates/footer.html',
+    link: function link(scope, element, attribute) {},
+    ctrl: function ctrl($scope) {}
+  };
+}); //closing
+'use strict';
+
+myApp.directive('menuDirect', function (productSrvc) {
+  return {
+    restrict: 'EA',
+    templateUrl: '../../templates/menuBar.html',
+    link: function link(scope, element, attribute) {
+      // productSrvc.getCart().then(function(res){
+      //   scope.cartCount = res.length;
+      //   console.log('cartCount',res.length);
+      // })
+    }
+  };
+}); //closing
+'use strict';
+
+myApp.service('cartSrvc', function ($http) {
+  var cart = [];
+  this.getCart = function () {
+    return cart.slice();
+  };
+  this.addToCart = function (productObj) {
+    cart.push(productObj);
+    //foreach if id is there at one to quantity
+    //update backend table
+    //update localStorage dollar localStorage
+  };
+  this.removeFromCart = function (id) {
+    //prototype find id splice
+    //update backend table
+    //update localStorage
+  };
+});
 'use strict';
 
 myApp.service('mainSrvc', function () {});
@@ -170,16 +192,29 @@ myApp.service('productSrvc', function ($http) {
       return arr;
     });
   };
-  this.postCart = function (proObj) {
-    console.log('fn fired srvc', proObj);
-    return $http({
-      method: 'POST',
-      url: '/api/cart',
-      data: proObj
-    }).then(function (res) {
-      console.log(res.data);
-      // return res.data;
-    });
+  ///Cart ///////////////////////////////////////////////////
+  ///Cart ///////////////////////////////////////////////////
+  this.addToCart = function (obj) {
+    // console.log('srvc obj', obj);
+    if (!localStorage.getItem('cart')) {
+      var cart = [];
+      cart.push(obj);
+      localStorage.setItem('cart', JSON.stringify(cart));
+    } else {
+      var _cart = JSON.parse(localStorage.getItem('cart'));
+      var present = void 0;
+      _cart.forEach(function (element, index) {
+        if (element.id === obj.id) {
+          element.quantity++;
+          present = true;
+        }
+      });
+      if (!present) {
+        _cart.push(obj);
+      }
+      localStorage.cart = JSON.stringify(_cart);
+      console.log('localStorage', _cart);
+    }
   };
 }); //closing
 var splitDollarArr = function splitDollarArr(arr) {

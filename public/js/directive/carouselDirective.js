@@ -3,7 +3,7 @@ myApp.directive('carouselDirect',function(){
     restrict: 'EA',
     templateUrl: './js/directive/carousel.html',
     controller: function($scope){
-      $scope.myInterval = 4000;
+      $scope.myInterval = 3000;
       $scope.slides = [{
                 image:'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Homepage/PRS_GEN3_Carousel.jpg&Format=jpg&Height=760&Crop=5&background=ffffff',
                 text: 'PRS GEN3 STOCK'

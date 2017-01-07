@@ -1,3 +1,24 @@
+.cart-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .cart-wrapper .cart-header {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    width: 93.6vw;
+    height: 114px;
+    border-bottom: 1px solid black; }
+    .cart-wrapper .cart-header div {
+      font-weight: 1000;
+      font-size: 35px;
+      padding-top: 25px;
+      color: #222222;
+      font-family: 'Oswald', sans-serif;
+      padding-bottom: 15px; }
+  .cart-wrapper .cart-item {
+    width: 93.6vw; }
+
 .home-wrapper {
   display: flex;
   flex-direction: column;
@@ -216,11 +237,23 @@ body {
   background-color: #DFDFDF; }
 
 .search-profile-cart {
+  position: relative;
   display: flex;
   justify-content: space-around;
   align-items: center;
   width: 30%;
   height: auto; }
+  .search-profile-cart span {
+    position: absolute;
+    top: 3.5%;
+    left: 88%;
+    font-family: 'Oswald',sans-serif;
+    font-size: 13px;
+    padding: 2px;
+    color: #AD182C;
+    background-color: gray;
+    border-radius: 7px;
+    text-align: center; }
 
 .menu-input {
   font-family: 'Oswald', sans-serif;

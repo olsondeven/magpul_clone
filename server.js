@@ -19,9 +19,10 @@ app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(session({
   secret: config.sessionSecret,
-  currentUser: null,
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+
+  cookie: { secure: true }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -51,8 +52,13 @@ const mainCtrl = require('./server/mainCtrl.js');
 const apiEndPointsArr = [
   'products',
   'products/:subCategory',
+  'orders',
+  'orderproducts'
 ];
 apiEndPointsArr.forEach((endPoint) => {
   app.get(`/api/${endPoint}`, mainCtrl.get(endPoint));
+  //post cart
 });
-app.post('/api/cart',mainCtrl.postCart);
+
+// app.get('/api/cart',mainCtrl.getCart);
+// app.post('/api/cart',mainCtrl.postCart);
