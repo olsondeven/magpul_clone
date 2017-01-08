@@ -1,7 +1,14 @@
 myApp.service('cartSrvc',function($http){
-  const cart = [];
+  // const cart = [];
   this.getCart = function(){
-    return cart.slice();
+    if(!localStorage.getItem('cart')){
+      return false;
+    }else {
+      let cart = JSON.parse(localStorage.getItem('cart'));
+      console.log('cartSrvc',cart);
+      return cart;
+    }
+    // return cart.slice();
   }
   this.addToCart = function(productObj){
     cart.push(productObj);

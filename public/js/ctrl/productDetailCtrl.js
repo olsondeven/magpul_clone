@@ -29,10 +29,14 @@ myApp.controller('productDetailCtrl',function($scope,$state,$stateParams,$sce,pr
     }
       var product = {
         id: i,
+        name: $scope.productData[0].name,
+        caliber: $scope.productData[0].caliber,
+        modelNumber: $scope.productData[0].modelNumber,
         quantity: parseInt($scope.quantity),
         price: parseFloat(p),
         color: $scope.color,
         img: $scope.productData[0].mainimg,
+        new: $scope.productData[0].new
     }
     if($scope.quantity && $scope.color){
       // console.log('front end ctrl fired',product);

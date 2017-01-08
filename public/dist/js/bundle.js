@@ -21,19 +21,16 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
     templateUrl: './templates/cart.html',
     controller: 'cartCtrl'
   });
-  // .state('editCart',{
-  //   url: '/edit-cart',
-  //   templateUrl: '.templates/editCart.html',
-  //   controller: 'editCartCtrl'
-  // })
 }); //closing
 'use strict';
 
-myApp.controller('cartCtrl', function ($scope, productSrvc) {
-  // productSrvc.getCart().then(function(res){
-  //   console.log('cartCtrl',res);
-  //   // $scope.cart = res;
-  // });
+myApp.controller('cartCtrl', function ($scope, cartSrvc) {
+  $scope.copyright = '\xAE';
+  $scope.cart = cartSrvc.getCart();
+  $scope.cart.forEach(function (element, index) {
+    element.total = (element.quantity * element.price).toFixed(2);
+  });
+  $scope.cartUpdate = function (num) {};
 }); //closing
 'use strict';
 
@@ -85,10 +82,14 @@ myApp.controller('productDetailCtrl', function ($scope, $state, $stateParams, $s
     }
     var product = {
       id: i,
+      name: $scope.productData[0].name,
+      caliber: $scope.productData[0].caliber,
+      modelNumber: $scope.productData[0].modelNumber,
       quantity: parseInt($scope.quantity),
       price: parseFloat(p),
       color: $scope.color,
-      img: $scope.productData[0].mainimg
+      img: $scope.productData[0].mainimg,
+      new: $scope.productData[0].new
     };
     if ($scope.quantity && $scope.color) {
       // console.log('front end ctrl fired',product);
@@ -129,8 +130,7 @@ myApp.directive('footerDirect', function () {
   return {
     restrict: 'EA',
     templateUrl: '../../templates/footer.html',
-    link: function link(scope, element, attribute) {},
-    ctrl: function ctrl($scope) {}
+    link: function link(scope, element, attribute) {}
   };
 }); //closing
 'use strict';
@@ -150,9 +150,16 @@ myApp.directive('menuDirect', function (productSrvc) {
 'use strict';
 
 myApp.service('cartSrvc', function ($http) {
-  var cart = [];
+  // const cart = [];
   this.getCart = function () {
-    return cart.slice();
+    if (!localStorage.getItem('cart')) {
+      return false;
+    } else {
+      var _cart = JSON.parse(localStorage.getItem('cart'));
+      console.log('cartSrvc', _cart);
+      return _cart;
+    }
+    // return cart.slice();
   };
   this.addToCart = function (productObj) {
     cart.push(productObj);
@@ -204,8 +211,8 @@ myApp.service('productSrvc', function ($http) {
       var _cart = JSON.parse(localStorage.getItem('cart'));
       var present = void 0;
       _cart.forEach(function (element, index) {
-        if (element.id === obj.id) {
-          element.quantity++;
+        if (element.id === obj.id && element.color === obj.color) {
+          element.quantity += obj.quantity;
           present = true;
         }
       });
@@ -215,6 +222,7 @@ myApp.service('productSrvc', function ($http) {
       localStorage.cart = JSON.stringify(_cart);
       console.log('localStorage', _cart);
     }
+    return swal('Item add to cart');
   };
 }); //closing
 var splitDollarArr = function splitDollarArr(arr) {

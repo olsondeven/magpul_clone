@@ -2,7 +2,29 @@
   <div class="cart-header">
     <div><b>EDIT CART</b></div>
   </div>
-  <!-- <div class="cart-item" ng-repeat='item in cart'>
-    <img ng-src="{{item.img}}" alt="">
-  </div> -->
+  <div ng-if='!cart' class="cart-empty">EMPTY</div>
+  <div class="cart-item" ng-repeat='item in cart'>
+    <div class="cart-img" ng-style="{'background-image':'url({{item.img}})'}"></div>
+    <div class="cart-product-detail">
+      <h3>Product</h3>
+      <p><span>{{item.name}}{{copyright}}</span></p>
+      <p>{{item.caliber}}</p>
+      <p>{{item.modelNumber}}</p>
+      <p>{{item.color}}</p>
+    </div>
+    <div class="cart-price">
+      <h3>Price</h3>
+      <p>${{item.price}}</p>
+    </div>
+    <div class="cart-quantity">
+      <h3>Quantity</h3>
+      <input type="text" ng-model='qNew'placeholder="{{item.quantity}}">
+      <button type="button" name="button" ng-click='cartUpdate(qNew)'>UPDATE</button>
+    </div>
+    <div class="cart-total">
+      <h3>Total</h3>
+      <p>${{item.total}}</p>
+    </div>
+    <button class="cart-remove-btn"type="button" name="button">REMOVE</button>
+  </div>
 </div>
