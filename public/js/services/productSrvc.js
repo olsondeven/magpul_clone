@@ -1,4 +1,4 @@
-myApp.service('productSrvc',function($http){
+myApp.service('productSrvc',function($http,$rootScope){
   this.getProductList = function(subcategory){
     return $http({
       method: 'GET',
@@ -46,6 +46,7 @@ this.addToCart = (obj)=>{
     localStorage.cart = JSON.stringify(cart);
     console.log('localStorage',cart);
   }
+  $rootScope.$broadcast('cartCount');
   return swal('Item add to cart');
 }
 

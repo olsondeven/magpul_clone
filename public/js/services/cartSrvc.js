@@ -1,4 +1,4 @@
-myApp.service('cartSrvc',function($http){
+myApp.service('cartSrvc',function($http,$rootScope){
   // const cart = [];
   this.getCart = function(){
     if(!localStorage.getItem('cart')){
@@ -13,6 +13,7 @@ myApp.service('cartSrvc',function($http){
   this.updateCart = (arr)=>{
     // console.log('srvc',arr)
     localStorage.cart = JSON.stringify(arr);
+    $rootScope.$broadcast('cartCount');
   }
   // this.addToCart = function(productObj){
   //   cart.push(productObj);

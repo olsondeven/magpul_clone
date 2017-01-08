@@ -25,11 +25,25 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
 'use strict';
 
 myApp.controller('cartCtrl', function ($scope, cartSrvc) {
-  $scope.copyright = '\xAE';
   $scope.cart = cartSrvc.getCart();
-  // $scope.cart.forEach((element,index)=>{
-  //   element.total = (element.quantity * element.price).toFixed(2);
-  // });
+  var cartTotalFn = function cartTotalFn() {
+    var total = 0;
+
+    $scope.cart.forEach(function (element, index) {
+      total = total + parseFloat(element.total);
+      console.log(total + parseFloat(element.total));
+      // total = parseInt(total).toFixed(2);
+    });
+    console.log('fired sub-total', total);
+    return total;
+  };
+  $scope.subTotal = cartTotalFn();
+  $scope.copyright = '\xAE';
+
+  $scope.cart.forEach(function (element, index) {
+    element.total = element.quantity * element.price;
+    $scope.subTotal = cartTotalFn();
+  });
 
   $scope.cartUpdate = function (num, index) {
     console.log('cart index num', index, num);
@@ -41,9 +55,16 @@ myApp.controller('cartCtrl', function ($scope, cartSrvc) {
       $scope.cart[index].total = num * $scope.cart[index].price;
       // console.log('new quantity', $scope.cart[index]);
       cartSrvc.updateCart($scope.cart);
+      $scope.subTotal = cartTotalFn();
       return swal('Updated');
     }
   };
+  $scope.cartRemove = function (index) {
+    $scope.cart.splice(index, 1);
+    cartSrvc.updateCart($scope.cart);
+    $scope.subTotal = cartTotalFn();
+  };
+  $scope.subTotal = cartTotalFn();
 }); //closing
 'use strict';
 
@@ -157,12 +178,26 @@ myApp.directive('menuDirect', function (productSrvc) {
       //   scope.cartCount = res.length;
       //   console.log('cartCount',res.length);
       // })
+      // scope.cartCount = (productSrvc.getCart()).length;
+    },
+    controller: function controller($scope, cartSrvc) {
+
+      var fireFn = function fireFn() {
+        $scope.cartCount = cartSrvc.getCart().reduce(function (prev, curr) {
+          return prev + curr.quantity;
+        }, 0);
+      };
+
+      $scope.$on('cartCount', function (event, args) {
+        fireFn();
+      });
+      fireFn();
     }
   };
 }); //closing
 'use strict';
 
-myApp.service('cartSrvc', function ($http) {
+myApp.service('cartSrvc', function ($http, $rootScope) {
   // const cart = [];
   this.getCart = function () {
     if (!localStorage.getItem('cart')) {
@@ -177,6 +212,7 @@ myApp.service('cartSrvc', function ($http) {
   this.updateCart = function (arr) {
     // console.log('srvc',arr)
     localStorage.cart = JSON.stringify(arr);
+    $rootScope.$broadcast('cartCount');
   };
   // this.addToCart = function(productObj){
   //   cart.push(productObj);
@@ -195,7 +231,7 @@ myApp.service('cartSrvc', function ($http) {
 myApp.service('mainSrvc', function () {});
 'use strict';
 
-myApp.service('productSrvc', function ($http) {
+myApp.service('productSrvc', function ($http, $rootScope) {
   this.getProductList = function (subcategory) {
     return $http({
       method: 'GET',
@@ -243,6 +279,7 @@ myApp.service('productSrvc', function ($http) {
       localStorage.cart = JSON.stringify(_cart);
       console.log('localStorage', _cart);
     }
+    $rootScope.$broadcast('cartCount');
     return swal('Item add to cart');
   };
 }); //closing

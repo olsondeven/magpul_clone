@@ -14,7 +14,7 @@
     </div>
     <div class="cart-price">
       <h3>Price</h3>
-      <p>${{item.price}}</p>
+      <p>{{item.price | currency}}</p>
     </div>
     <div class="cart-quantity">
       <h3>Quantity</h3>
@@ -23,8 +23,13 @@
     </div>
     <div class="cart-total">
       <h3>Total</h3>
-      <p>${{item.total}}</p>
+      <p>{{item.total | currency}}</p>
     </div>
-    <button class="cart-remove-btn"type="button" name="button">REMOVE</button>
+    <div class="remove-btn">
+      <button class="cart-remove-btn" ng-click='cartRemove($index)' type="button" name="button">REMOVE</button>
+    </div>
+  </div>
+  <div class="sub-total">
+    <h3>Sub-Total</h3> <h3><span>{{subTotal | currency}}</span></h3>
   </div>
 </div>

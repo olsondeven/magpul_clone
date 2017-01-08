@@ -7,6 +7,20 @@ myApp.directive('menuDirect',function(productSrvc){
       //   scope.cartCount = res.length;
       //   console.log('cartCount',res.length);
       // })
+      // scope.cartCount = (productSrvc.getCart()).length;
     },
+    controller: function($scope,cartSrvc){
+
+      let fireFn = ()=>{
+        $scope.cartCount = cartSrvc.getCart().reduce((prev, curr)=>{
+          return prev + curr.quantity;
+        },0);
+      }
+
+      $scope.$on('cartCount',(event, args)=>{
+        fireFn();
+      });
+      fireFn();
+    }
   };
 });//closing
