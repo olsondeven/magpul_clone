@@ -26,6 +26,9 @@ this.addToCart = (obj)=>{
   if(!localStorage.getItem('cart')){
     let cart = [];
     cart.push(obj);
+    cart.forEach((element,index)=>{
+      element.total = (element.quantity * element.price).toFixed(2);
+    });
     localStorage.setItem('cart',JSON.stringify(cart));
   }else{
     let cart = JSON.parse(localStorage.getItem('cart'));
@@ -33,6 +36,7 @@ this.addToCart = (obj)=>{
     cart.forEach((element,index)=>{
       if(element.id === obj.id && element.color === obj.color){
         element.quantity += obj.quantity;
+        element.total = (element.quantity * element.price).toFixed(2);
         present = true;
       }
     });

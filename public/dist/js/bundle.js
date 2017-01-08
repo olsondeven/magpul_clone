@@ -27,10 +27,23 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
 myApp.controller('cartCtrl', function ($scope, cartSrvc) {
   $scope.copyright = '\xAE';
   $scope.cart = cartSrvc.getCart();
-  $scope.cart.forEach(function (element, index) {
-    element.total = (element.quantity * element.price).toFixed(2);
-  });
-  $scope.cartUpdate = function (num) {};
+  // $scope.cart.forEach((element,index)=>{
+  //   element.total = (element.quantity * element.price).toFixed(2);
+  // });
+
+  $scope.cartUpdate = function (num, index) {
+    console.log('cart index num', index, num);
+    if (!num) {
+      return;
+    } else {
+      // console.log('cartUpdate fired');
+      $scope.cart[index].quantity = num;
+      $scope.cart[index].total = num * $scope.cart[index].price;
+      // console.log('new quantity', $scope.cart[index]);
+      cartSrvc.updateCart($scope.cart);
+      return swal('Updated');
+    }
+  };
 }); //closing
 'use strict';
 
@@ -155,18 +168,22 @@ myApp.service('cartSrvc', function ($http) {
     if (!localStorage.getItem('cart')) {
       return false;
     } else {
-      var _cart = JSON.parse(localStorage.getItem('cart'));
-      console.log('cartSrvc', _cart);
-      return _cart;
+      var cart = JSON.parse(localStorage.getItem('cart'));
+      // console.log('cartSrvc',cart);
+      return cart;
     }
     // return cart.slice();
   };
-  this.addToCart = function (productObj) {
-    cart.push(productObj);
-    //foreach if id is there at one to quantity
-    //update backend table
-    //update localStorage dollar localStorage
+  this.updateCart = function (arr) {
+    // console.log('srvc',arr)
+    localStorage.cart = JSON.stringify(arr);
   };
+  // this.addToCart = function(productObj){
+  //   cart.push(productObj);
+  //   //foreach if id is there at one to quantity
+  //   //update backend table
+  //   //update localStorage dollar localStorage
+  // }
   this.removeFromCart = function (id) {
     //prototype find id splice
     //update backend table
@@ -206,6 +223,9 @@ myApp.service('productSrvc', function ($http) {
     if (!localStorage.getItem('cart')) {
       var cart = [];
       cart.push(obj);
+      cart.forEach(function (element, index) {
+        element.total = (element.quantity * element.price).toFixed(2);
+      });
       localStorage.setItem('cart', JSON.stringify(cart));
     } else {
       var _cart = JSON.parse(localStorage.getItem('cart'));
@@ -213,6 +233,7 @@ myApp.service('productSrvc', function ($http) {
       _cart.forEach(function (element, index) {
         if (element.id === obj.id && element.color === obj.color) {
           element.quantity += obj.quantity;
+          element.total = (element.quantity * element.price).toFixed(2);
           present = true;
         }
       });

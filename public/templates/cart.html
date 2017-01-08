@@ -3,7 +3,7 @@
     <div><b>EDIT CART</b></div>
   </div>
   <div ng-if='!cart' class="cart-empty">EMPTY</div>
-  <div class="cart-item" ng-repeat='item in cart'>
+  <div class="cart-item" ng-repeat='item in cart track by $index'>
     <div class="cart-img" ng-style="{'background-image':'url({{item.img}})'}"></div>
     <div class="cart-product-detail">
       <h3>Product</h3>
@@ -19,7 +19,7 @@
     <div class="cart-quantity">
       <h3>Quantity</h3>
       <input type="text" ng-model='qNew'placeholder="{{item.quantity}}">
-      <button type="button" name="button" ng-click='cartUpdate(qNew)'>UPDATE</button>
+      <button type="button" name="button" ng-click='cartUpdate(qNew,$index)'>UPDATE</button>
     </div>
     <div class="cart-total">
       <h3>Total</h3>
