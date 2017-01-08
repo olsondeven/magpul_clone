@@ -1,3 +1,4 @@
+@import 'reset';
 body{
   background-color: #ffffff;
 }
@@ -5,3 +6,8 @@ body{
   cursor: pointer;
   cursor: hand;
 }
+@import 'menuBar';
+@import 'home';
+@import 'product';
+@import 'productDetails';
+@import 'cart';

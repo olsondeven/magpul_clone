@@ -128,6 +128,7 @@ myApp.controller('productDetailCtrl', function ($scope, $state, $stateParams, $s
     if ($scope.quantity && $scope.color) {
       // console.log('front end ctrl fired',product);
       productSrvc.addToCart(product);
+      $scope.quantity = null;
     }
   };
 }); //closing

@@ -30,7 +30,7 @@ gulp.task("clean", function(cb){
 })
 
 gulp.task("build-css", function(){
-  gulp.src("./styles/*")
+  gulp.src("./styles/mainStyle.scss")
       .pipe(sourcemaps.init())
       .pipe(sass())
       .pipe(cachebust.resources())
