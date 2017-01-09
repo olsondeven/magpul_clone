@@ -1,13 +1,13 @@
 @import 'reset';
-body{
-  background-color: #ffffff;
-}
-.hand{
-  cursor: pointer;
-  cursor: hand;
-}
 @import 'menuBar';
 @import 'home';
 @import 'product';
 @import 'productDetails';
 @import 'cart';
+// body{
+//   background-color: #ffffff;
+// }
+.hand{
+  cursor: pointer;
+  cursor: hand;
+}

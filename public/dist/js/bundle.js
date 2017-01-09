@@ -24,7 +24,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
 }); //closing
 'use strict';
 
-myApp.controller('cartCtrl', function ($scope, cartSrvc) {
+myApp.controller('cartCtrl', function ($scope, cartSrvc, $rootScope) {
   $scope.cart = cartSrvc.getCart();
   var cartTotalFn = function cartTotalFn() {
     var total = 0;
@@ -50,12 +50,14 @@ myApp.controller('cartCtrl', function ($scope, cartSrvc) {
     if (!num) {
       return;
     } else {
-      // console.log('cartUpdate fired');
-      $scope.cart[index].quantity = num;
+      num = parseInt(num);
+      console.log('cartUpdate fired', num);
+      $scope.cart[index].quantity = parseInt(num);
       $scope.cart[index].total = num * $scope.cart[index].price;
       // console.log('new quantity', $scope.cart[index]);
       cartSrvc.updateCart($scope.cart);
       $scope.subTotal = cartTotalFn();
+      $rootScope.$broadcast('cartCount');
       return swal('Updated');
     }
   };

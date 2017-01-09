@@ -109,4 +109,25 @@ $cart-gray-background: #dfdfdf;
       }
     }
   }
+  .sub-total{
+    height: 114px;
+    width: $cart-width;
+    // background-color: red;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    // border: 1px solid red;
+    h3{
+      font-weight: 500;
+      font-family: 'Oswald', sans-serif;
+      color: $cart-gray-text;
+      padding-bottom: 5px;
+      span{
+        font-weight: 500;
+        font-family: 'Oswald', sans-serif;
+        color: black;
+        padding-bottom: 5px;
+      }
+    }
+  }
 }

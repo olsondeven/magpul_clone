@@ -10,8 +10,40 @@
   <span>
     <h1>AK/AKM</h1>
   </span>
-  <div class="ak-wrapper">
-    <div class="product" ng-repeat='product in products'>
+  <div class="product-category-wrapper">
+    <div ng-if="product.platform === 'AK/AKM'" class="product" ng-repeat='product in products'>
+      <div ui-sref='productDetail({id:{{product.id}}})' id="prod-img-hover"class="product-img hand" ng-style="{'background-image':'url({{product.mainimg}})'}">
+        <span ng-if='product.new'>NEW</span>
+      </div>
+      <div class='product-info'>
+        <p class='product-name'>{{product.name}}</p>
+        <p class="product-caliber">{{product.caliber}}</p>
+        <p class='product-model'>{{product.modelnumber}}</p>
+      </div>
+      <span ui-sref='productDetail({id:{{product.id}}})' class="hand">${{product.price}}</span>
+    </div>
+  </div>
+  <span>
+    <h1>AR15/M4/M16</h1>
+  </span>
+  <div class="product-category-wrapper">
+    <div ng-if="product.platform === 'AR15/M4/M16'" class="product" ng-repeat='product in products'>
+      <div ui-sref='productDetail({id:{{product.id}}})' id="prod-img-hover"class="product-img hand" ng-style="{'background-image':'url({{product.mainimg}})'}">
+        <span ng-if='product.new'>NEW</span>
+      </div>
+      <div class='product-info'>
+        <p class='product-name'>{{product.name}}</p>
+        <p class="product-caliber">{{product.caliber}}</p>
+        <p class='product-model'>{{product.modelnumber}}</p>
+      </div>
+      <span ui-sref='productDetail({id:{{product.id}}})' class="hand">${{product.price}}</span>
+    </div>
+  </div>
+  <span>
+    <h1>GLOCK</h1>
+  </span>
+  <div class="product-category-wrapper">
+    <div ng-if="product.platform === 'GLOCK'" class="product" ng-repeat='product in products'>
       <div ui-sref='productDetail({id:{{product.id}}})' id="prod-img-hover"class="product-img hand" ng-style="{'background-image':'url({{product.mainimg}})'}">
         <span ng-if='product.new'>NEW</span>
       </div>

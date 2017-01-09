@@ -16,20 +16,34 @@ $displaynone: none;
   background-color: $bgcolor;
   color: $textcolor;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  // align-items: center;
+  .menu-width-wrapper{
+    display: flex;
+    justify-content: space-between;
+    // width: 93.6%;
+    width: 93.59vw;
+    // border: 1px solid orange;
+    height: 100%;
+  }
 }
-.menu-logo{
-  padding-left: 62px;
+.menu-logo-wrapper{
+  width: 10%;
   // border: 1px solid red;
+  .menu-logo{
+    // padding-left: 3.1%;
+    // width: 20%;
+    max-height: 100%;
+  }
 }
 .menu-selection{
   position: relative;
   font-family: 'Oswald', sans-serif;
   width: 30%;
   height: auto;
-  font-size: 20px;
+  font-size: 120%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   // border: 1px solid red;
   span{
@@ -128,27 +142,48 @@ $displaynone: none;
   align-items: center;
   width: 30%;
   height: auto;
-  span{
-    position: absolute;
-    top: 3.5%;
-    left: 88%;
-    font-family: 'Oswald',sans-serif;
-    font-size: 13px;
-    padding: 2px;
-    color: #AD182C;
-    background-color: gray;
-    border-radius: 7px;
-    text-align: center;
+  .ms{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    // border: 1px solid yellow;
+    width: 78%;
+    height: 100%;
+    i:hover{
+      color: #AD182C;
+    }
+    .menu-input{
+      font-family: 'Oswald', sans-serif;
+      height: 28px;
+      width: 58%;
+      color: black;
+    }
   }
-}
-.menu-input{
-  font-family: 'Oswald', sans-serif;
-  height: 23px;
-  width: 248px;
-  color: black;
-}
-.ms{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .menu-bar-search{
+    i:hover{
+      color: #AD182C;
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: auto;
+    height: 100%;
+    // border: 1px solid red;
+    span{
+      position: absolute;
+      top: 0%;
+      right: 0%;
+      font-family: 'Oswald',sans-serif;
+      font-size: 70%;
+      font-weight: bold;
+      padding: 4px;
+      padding-left: 4px;
+      padding-right: 4px;
+      color: #AD182C;
+      background-color: gray;
+      border-radius: 10px;
+      text-align: center;
+    }
+  }
 }
