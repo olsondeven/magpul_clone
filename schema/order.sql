@@ -1,5 +1,6 @@
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY,
+  user_id INT references users(id)
 )
 -- create many to many to order product
 -- shipping info

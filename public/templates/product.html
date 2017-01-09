@@ -20,7 +20,8 @@
         <p class="product-caliber">{{product.caliber}}</p>
         <p class='product-model'>{{product.modelnumber}}</p>
       </div>
-      <span ui-sref='productDetail({id:{{product.id}}})' class="hand">${{product.price}}</span>
+      <button ui-sref='productDetail({id:{{product.id}}})' class="hand">{{product.price | currency}}</button>
+      <!-- <span ui-sref='productDetail({id:{{product.id}}})' class="hand">${{product.price}}</span> -->
     </div>
   </div>
   <span>
@@ -36,7 +37,8 @@
         <p class="product-caliber">{{product.caliber}}</p>
         <p class='product-model'>{{product.modelnumber}}</p>
       </div>
-      <span ui-sref='productDetail({id:{{product.id}}})' class="hand">${{product.price}}</span>
+      <button ui-sref='productDetail({id:{{product.id}}})' class="hand">{{product.price | currency}}</button>
+      <!-- <span ui-sref='productDetail({id:{{product.id}}})' class="hand">${{product.price}}</span> -->
     </div>
   </div>
   <span>
@@ -52,7 +54,8 @@
         <p class="product-caliber">{{product.caliber}}</p>
         <p class='product-model'>{{product.modelnumber}}</p>
       </div>
-      <span ui-sref='productDetail({id:{{product.id}}})' class="hand">${{product.price}}</span>
+      <button ui-sref='productDetail({id:{{product.id}}})' class="hand">{{product.price | currency}}</button>
+      <!-- <span ui-sref='productDetail({id:{{product.id}}})' class="hand">{{product.price}}</span> -->
     </div>
   </div>
 </div>

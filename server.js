@@ -41,9 +41,6 @@ const db = app.get('db');
 ///////////////
 // endpoints //
 //////////////
-app.listen(config.port, function(){
-  console.log('listening to port: ',config.port);
-});
 
 module.exports = app;
 
@@ -62,3 +59,6 @@ apiEndPointsArr.forEach((endPoint) => {
 
 // app.get('/api/cart',mainCtrl.getCart);
 // app.post('/api/cart',mainCtrl.postCart);
+app.listen(process.env.PORT || config.port, function(){
+  console.log('listening to port: ',http.address().port);
+});

@@ -7,7 +7,6 @@
 //7. Run gulp watch to watch for scss / js changes
 //8. Use ctrl + C in terminal to kill the watch
 
-
 var gulp = require("gulp"),
     sass = require("gulp-sass"),
     sourcemaps = require("gulp-sourcemaps"),

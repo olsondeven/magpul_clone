@@ -141,5 +141,18 @@ $product-red: #AD182C;
         font-family: 'Oswald',sans-serif;
       }
     }
+    button{
+      color: $bg-color;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      position: absolute;
+      right: 38px;
+      bottom: 35px;
+      width: 25%;
+      height: 36px;
+      background-color: $product-red;
+      font-family: 'Oswald',sans-serif;
+    }
   }
 }
