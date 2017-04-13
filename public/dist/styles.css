@@ -712,6 +712,15 @@ input, select {
         color: black;
         padding-bottom: 5px; }
 
+.login-wrapper {
+  width: 100vw;
+  height: 80vh;
+  border: 1px solid red; }
+  .login-wrapper .login-display-cart-info {
+    width: 100%;
+    height: 60%;
+    border: 1px solid blue; }
+
 .hand {
   cursor: pointer;
   cursor: hand; }

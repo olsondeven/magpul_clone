@@ -23,4 +23,9 @@ myApp.config(function($stateProvider, $urlRouterProvider){
     templateUrl: './templates/cart.html',
     controller: 'cartCtrl'
   })
+  .state('login',{
+    url: '/login',
+    templateUrl: './templates/login.html',
+    controller: 'loginCtrl'
+  })
 });//closing

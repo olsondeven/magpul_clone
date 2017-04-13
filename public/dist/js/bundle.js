@@ -20,119 +20,11 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
     url: '/cart',
     templateUrl: './templates/cart.html',
     controller: 'cartCtrl'
+  }).state('login', {
+    url: '/login',
+    templateUrl: './templates/login.html',
+    controller: 'loginCtrl'
   });
-}); //closing
-'use strict';
-
-myApp.controller('cartCtrl', function ($scope, cartSrvc, $rootScope) {
-  $scope.cart = cartSrvc.getCart();
-  var cartTotalFn = function cartTotalFn() {
-    var total = 0;
-
-    $scope.cart.forEach(function (element, index) {
-      total = total + parseFloat(element.total);
-      console.log(total + parseFloat(element.total));
-      // total = parseInt(total).toFixed(2);
-    });
-    console.log('fired sub-total', total);
-    return total;
-  };
-  $scope.subTotal = cartTotalFn();
-  $scope.copyright = '\xAE';
-
-  $scope.cart.forEach(function (element, index) {
-    element.total = element.quantity * element.price;
-    $scope.subTotal = cartTotalFn();
-  });
-
-  $scope.cartUpdate = function (num, index) {
-    console.log('cart index num', index, num);
-    if (!num) {
-      return;
-    } else {
-      num = parseInt(num);
-      console.log('cartUpdate fired', num);
-      $scope.cart[index].quantity = parseInt(num);
-      $scope.cart[index].total = num * $scope.cart[index].price;
-      // console.log('new quantity', $scope.cart[index]);
-      cartSrvc.updateCart($scope.cart);
-      $scope.subTotal = cartTotalFn();
-      $rootScope.$broadcast('cartCount');
-      return swal('Updated');
-    }
-  };
-  $scope.cartRemove = function (index) {
-    $scope.cart.splice(index, 1);
-    cartSrvc.updateCart($scope.cart);
-    $scope.subTotal = cartTotalFn();
-  };
-  $scope.subTotal = cartTotalFn();
-}); //closing
-'use strict';
-
-myApp.controller('homeCtrl', function ($scope, mainSrvc) {
-  // $scope.test = 'PMAG\xAE 30 AK/AKM GEN M3\u2122';
-}); //closing
-'use strict';
-
-myApp.controller('productCtrl', function ($scope, $state, $stateParams, $sce, productSrvc) {
-  $scope.test = 'PMAG\xAE 30 AK/AKM MOE\xAE';
-  $scope.category = $stateParams.category;
-  $scope.subcategory = $stateParams.subcategory.toUpperCase();
-  productSrvc.getProductList($stateParams.subcategory).then(function (res) {
-    $scope.products = res;
-    // console.log($scope.test);
-    // console.log($scope.products[0]);
-  });
-}); //closing
-"use strict";
-
-myApp.controller('productDetailCtrl', function ($scope, $state, $stateParams, $sce, productSrvc) {
-  $scope.colorFn = function (str) {
-    if (str === "black") {
-      $scope.color = "BLACK";
-      // console.log('fn fired', $scope.color);
-    } else if (str === 'sand') {
-      $scope.color = "SAND";
-      $scope.colorImg = '';
-      // console.log('fn fired', $scope.color);
-    }
-  };
-  $scope.copyright = '\xAE';
-  $scope.test = $stateParams.id;
-  productSrvc.getProductId($stateParams.id).then(function (res) {
-    // console.log(res);
-    $scope.productData = res;
-    // console.log($scope.productData[0].mainimg);
-    $scope.productData[0].subcategory = $scope.productData[0].subcategory.toUpperCase();
-  });
-  // console.log($stateParams.id);
-  $scope.addToShoppingCart = function (i, p) {
-    // console.log('fn fired',i,q,p);
-    if (!$scope.color) {
-      return swal('Please select a color');
-      // return alert('Please select color');
-    }
-    if (!$scope.quantity) {
-      $scope.quantity = 1;
-    }
-    var product = {
-      id: i,
-      name: $scope.productData[0].name,
-      caliber: $scope.productData[0].caliber,
-      modelNumber: $scope.productData[0].modelNumber,
-      quantity: parseInt($scope.quantity),
-      price: parseFloat(p),
-      color: $scope.color,
-      img: $scope.productData[0].mainimg,
-      new: $scope.productData[0].new
-    };
-    if ($scope.quantity && $scope.color) {
-      // console.log('front end ctrl fired',product);
-      productSrvc.addToCart(product);
-      $scope.quantity = null;
-    }
-  };
 }); //closing
 'use strict';
 
@@ -200,6 +92,123 @@ myApp.directive('menuDirect', function (productSrvc) {
 }); //closing
 'use strict';
 
+myApp.controller('cartCtrl', function ($scope, cartSrvc, $rootScope) {
+  $scope.cart = cartSrvc.getCart();
+  var cartTotalFn = function cartTotalFn() {
+    var total = 0;
+
+    $scope.cart.forEach(function (element, index) {
+      total = total + parseFloat(element.total);
+      console.log(total + parseFloat(element.total));
+      // total = parseInt(total).toFixed(2);
+    });
+    console.log('fired sub-total', total);
+    return total;
+  };
+  $scope.subTotal = cartTotalFn();
+  $scope.copyright = '\xAE';
+
+  $scope.cart.forEach(function (element, index) {
+    element.total = element.quantity * element.price;
+    $scope.subTotal = cartTotalFn();
+  });
+
+  $scope.cartUpdate = function (num, index) {
+    console.log('cart index num', index, num);
+    if (!num) {
+      return;
+    } else {
+      num = parseInt(num);
+      console.log('cartUpdate fired', num);
+      $scope.cart[index].quantity = parseInt(num);
+      $scope.cart[index].total = num * $scope.cart[index].price;
+      // console.log('new quantity', $scope.cart[index]);
+      cartSrvc.updateCart($scope.cart);
+      $scope.subTotal = cartTotalFn();
+      $rootScope.$broadcast('cartCount');
+      return swal('Updated');
+    }
+  };
+  $scope.cartRemove = function (index) {
+    $scope.cart.splice(index, 1);
+    cartSrvc.updateCart($scope.cart);
+    $scope.subTotal = cartTotalFn();
+  };
+  $scope.subTotal = cartTotalFn();
+}); //closing
+'use strict';
+
+myApp.controller('homeCtrl', function ($scope, mainSrvc) {
+  // $scope.test = 'PMAG\xAE 30 AK/AKM GEN M3\u2122';
+}); //closing
+'use strict';
+
+myApp.controller('loginCtrl', function ($scope, loginSrvc) {
+  $scope.test = 'poop';
+}); //closing
+'use strict';
+
+myApp.controller('productCtrl', function ($scope, $state, $stateParams, $sce, productSrvc) {
+  $scope.test = 'PMAG\xAE 30 AK/AKM MOE\xAE';
+  $scope.category = $stateParams.category;
+  $scope.subcategory = $stateParams.subcategory.toUpperCase();
+  productSrvc.getProductList($stateParams.subcategory).then(function (res) {
+    $scope.products = res;
+    // console.log($scope.test);
+    // console.log($scope.products[0]);
+  });
+}); //closing
+"use strict";
+
+myApp.controller('productDetailCtrl', function ($scope, $state, $stateParams, $sce, productSrvc) {
+  $scope.colorFn = function (str) {
+    if (str === "black") {
+      $scope.color = "BLACK";
+      // console.log('fn fired', $scope.color);
+    } else if (str === 'sand') {
+      $scope.color = "SAND";
+      $scope.colorImg = '';
+      // console.log('fn fired', $scope.color);
+    }
+  };
+  $scope.copyright = '\xAE';
+  $scope.test = $stateParams.id;
+  productSrvc.getProductId($stateParams.id).then(function (res) {
+    // console.log(res);
+    $scope.productData = res;
+    // console.log($scope.productData[0].mainimg);
+    $scope.productData[0].subcategory = $scope.productData[0].subcategory.toUpperCase();
+  });
+  // console.log($stateParams.id);
+  $scope.addToShoppingCart = function (i, p) {
+    // console.log('fn fired',i,q,p);
+    if (!$scope.color) {
+      return swal('Please select a color');
+      // return alert('Please select color');
+    }
+    if (!$scope.quantity) {
+      $scope.quantity = 1;
+    }
+    var product = {
+      id: i,
+      name: $scope.productData[0].name,
+      caliber: $scope.productData[0].caliber,
+      modelNumber: $scope.productData[0].modelNumber,
+      quantity: parseInt($scope.quantity),
+      price: parseFloat(p),
+      color: $scope.color,
+      img: $scope.productData[0].mainimg,
+      new: $scope.productData[0].new
+    };
+    if ($scope.quantity && $scope.color) {
+      // console.log('front end ctrl fired',product);
+      productSrvc.addToCart(product);
+      $scope.quantity = null;
+    }
+  };
+}); //closing
+'use strict';
+
 myApp.service('cartSrvc', function ($http, $rootScope) {
   // const cart = [];
   this.getCart = function () {
@@ -229,6 +238,9 @@ myApp.service('cartSrvc', function ($http, $rootScope) {
     //update localStorage
   };
 });
+'use strict';
+
+myApp.service('loginSrvc', function ($http) {});
 'use strict';
 
 myApp.service('mainSrvc', function () {});

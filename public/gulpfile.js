@@ -19,9 +19,9 @@ var gulp = require("gulp"),
 var CacheBuster = require("gulp-cachebust");
 var cachebust = new CacheBuster();
 
-gulp.task("sayhello", function(){
-  console.log("hello dmkjasdl");
-})
+// gulp.task("sayhello", function(){
+//   console.log("hello dmkjasdl");
+// })
 
 
 gulp.task("clean", function(cb){
