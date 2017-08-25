@@ -1,3 +1,3 @@
 myApp.controller('loginCtrl',function($scope,loginSrvc){
-  $scope.test = 'poop';
+  $scope.test = 'helloworld';
 });//closing

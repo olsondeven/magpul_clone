@@ -28,70 +28,6 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
 }); //closing
 'use strict';
 
-myApp.directive('carouselDirect', function () {
-  return {
-    restrict: 'EA',
-    templateUrl: './js/directive/carousel.html',
-    controller: function controller($scope) {
-      $scope.myInterval = 3000;
-      $scope.slides = [{
-        image: 'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Homepage/PRS_GEN3_Carousel.jpg&Format=jpg&Height=760&Crop=5&background=ffffff',
-        text: 'PRS GEN3 STOCK'
-      }, {
-        image: 'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Homepage/Hats.jpg&Format=jpg&Height=760&Crop=5&background=ffffff',
-        text: 'MAGPUL HATS'
-      }, {
-        image: 'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Homepage/SL-SCarousel.jpg&Format=jpg&Height=760&Crop=5&background=ffffff',
-        text: 'MOE SL-S CARBINE STOCK'
-      }, {
-        image: 'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Homepage/HunterTakedown.jpg&Format=jpg&Height=760&Crop=5&background=ffffff',
-        text: 'HUNTER SERIES STOCKS AND ACCESSORIES'
-      }, {
-        image: 'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Homepage/Glock21.jpg&Format=jpg&Height=760&Crop=5&background=ffffff',
-        text: 'PMAG 21 GL9'
-      }];
-    }
-  };
-});
-'use strict';
-
-myApp.directive('footerDirect', function () {
-  return {
-    restrict: 'EA',
-    templateUrl: '../../templates/footer.html',
-    link: function link(scope, element, attribute) {}
-  };
-}); //closing
-'use strict';
-
-myApp.directive('menuDirect', function (productSrvc) {
-  return {
-    restrict: 'EA',
-    templateUrl: '../../templates/menuBar.html',
-    link: function link(scope, element, attribute) {
-      // productSrvc.getCart().then(function(res){
-      //   scope.cartCount = res.length;
-      //   console.log('cartCount',res.length);
-      // })
-      // scope.cartCount = (productSrvc.getCart()).length;
-    },
-    controller: function controller($scope, cartSrvc) {
-
-      var fireFn = function fireFn() {
-        $scope.cartCount = cartSrvc.getCart().reduce(function (prev, curr) {
-          return prev + curr.quantity;
-        }, 0);
-      };
-
-      $scope.$on('cartCount', function (event, args) {
-        fireFn();
-      });
-      fireFn();
-    }
-  };
-}); //closing
-'use strict';
-
 myApp.controller('cartCtrl', function ($scope, cartSrvc, $rootScope) {
   $scope.cart = cartSrvc.getCart();
   var cartTotalFn = function cartTotalFn() {
@@ -144,7 +80,7 @@ myApp.controller('homeCtrl', function ($scope, mainSrvc) {
 'use strict';
 
 myApp.controller('loginCtrl', function ($scope, loginSrvc) {
-  $scope.test = 'poop';
+  $scope.test = 'helloworld';
 }); //closing
 'use strict';
 
@@ -204,6 +140,70 @@ myApp.controller('productDetailCtrl', function ($scope, $state, $stateParams, $s
       // console.log('front end ctrl fired',product);
       productSrvc.addToCart(product);
       $scope.quantity = null;
+    }
+  };
+}); //closing
+'use strict';
+
+myApp.directive('carouselDirect', function () {
+  return {
+    restrict: 'EA',
+    templateUrl: './js/directive/carousel.html',
+    controller: function controller($scope) {
+      $scope.myInterval = 3000;
+      $scope.slides = [{
+        image: 'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Homepage/PRS_GEN3_Carousel.jpg&Format=jpg&Height=760&Crop=5&background=ffffff',
+        text: 'PRS GEN3 STOCK'
+      }, {
+        image: 'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Homepage/Hats.jpg&Format=jpg&Height=760&Crop=5&background=ffffff',
+        text: 'MAGPUL HATS'
+      }, {
+        image: 'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Homepage/SL-SCarousel.jpg&Format=jpg&Height=760&Crop=5&background=ffffff',
+        text: 'MOE SL-S CARBINE STOCK'
+      }, {
+        image: 'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Homepage/HunterTakedown.jpg&Format=jpg&Height=760&Crop=5&background=ffffff',
+        text: 'HUNTER SERIES STOCKS AND ACCESSORIES'
+      }, {
+        image: 'https://www.magpul.com/Admin/Public/GetImage.ashx?Image=/Files/Files/Images/Homepage/Glock21.jpg&Format=jpg&Height=760&Crop=5&background=ffffff',
+        text: 'PMAG 21 GL9'
+      }];
+    }
+  };
+});
+'use strict';
+
+myApp.directive('footerDirect', function () {
+  return {
+    restrict: 'EA',
+    templateUrl: '../../templates/footer.html',
+    link: function link(scope, element, attribute) {}
+  };
+}); //closing
+'use strict';
+
+myApp.directive('menuDirect', function (productSrvc) {
+  return {
+    restrict: 'EA',
+    templateUrl: '../../templates/menuBar.html',
+    link: function link(scope, element, attribute) {
+      // productSrvc.getCart().then(function(res){
+      //   scope.cartCount = res.length;
+      //   console.log('cartCount',res.length);
+      // })
+      // scope.cartCount = (productSrvc.getCart()).length;
+    },
+    controller: function controller($scope, cartSrvc) {
+
+      var fireFn = function fireFn() {
+        $scope.cartCount = cartSrvc.getCart().reduce(function (prev, curr) {
+          return prev + curr.quantity;
+        }, 0);
+      };
+
+      $scope.$on('cartCount', function (event, args) {
+        fireFn();
+      });
+      fireFn();
     }
   };
 }); //closing
